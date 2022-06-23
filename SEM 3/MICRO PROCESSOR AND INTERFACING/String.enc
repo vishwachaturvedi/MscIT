@@ -1,0 +1,23 @@
+mydata segment
+    STR1 DB 'BMIIT'
+    STR2 DB 5 
+mydata ends
+
+mycode segment
+start:
+    ASSUME CS:mycode,DS:mydata
+    MOV AX,mydata
+    MOV DS,AX
+    MOV ES,AX
+    MOV CX,05
+    LEA SI,STR1
+    LEA DI,STR2
+    CLD
+  C:MOVSB 
+    LOOP C
+    MOV AX, 4c00h
+    INT 21h  
+
+mycode ends
+
+end start

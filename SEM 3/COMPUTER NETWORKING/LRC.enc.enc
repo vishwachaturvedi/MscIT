@@ -1,0 +1,176 @@
+#include<iostream>
+using namespace std;
+class LRC
+{
+	int send[4][8],ans1[8],ans2[8],i,j,count,count1,receive[4][8];
+
+	public:
+		void get_senders_data()
+		{
+			cout<<"\n--------------- Enter Sender's Data --------------\n\n";
+			
+			for(i=0;i<4;i++)
+			{
+				cout<<"\nEnter Data "<<i+1<<" :- \n\n";
+				for(j=0;j<8;j++)
+				{
+					cout<<"\nEnter Data : ";
+					cin>>send[i][j];
+				}
+			}
+		}
+		void get_receivers_data()
+		{
+			cout<<"\n--------------- Enter Receiver's Data --------------\n\n";
+			
+			for(i=0;i<4;i++)
+			{
+				cout<<"\nEnter Data "<<i+1<<" :- \n\n";
+				for(j=0;j<8;j++)
+				{
+					cout<<"\nEnter Data : ";
+					cin>>receive[i][j];
+				}
+			}
+		}
+		void senders_data()
+		{
+			cout<<"\n--------------- Display Sender's Data ---------------\n\n";
+			for(i=0;i<4;i++)
+			{
+				for(j=0;j<8;j++)
+				{
+					cout<<send[i][j]<<" ";
+				}
+				cout<<"\n";
+			}
+		}
+
+		void receivers_data()
+		{
+			cout<<"\n--------------- Display receiver's Data ---------------\n\n";
+			for(i=0;i<4;i++)
+			{
+				for(j=0;j<8;j++)
+				{
+					cout<<receive[i][j]<<" ";
+				}
+				cout<<"\n";
+			}
+		}
+		void get_answer_for_sender()
+		{
+			//--------------- Find Answer For Sender ----------------
+			for(i=0;i<8;i++)
+			{
+				count = 0;
+				for(j=0;j<4;j++)
+				{
+					if(send[j][i] == 1)
+					{
+						count = count + 1;
+					}
+				}
+				if(count % 2 == 0)
+				{
+					ans1[i] = 0;
+				}
+				else
+				{
+					ans1[i] = 1;
+				}
+			}
+		}
+		void get_answer_for_receiver()
+		{
+			//--------------- Find Answer For Receiver----------------
+			for(i=0;i<8;i++)
+			{
+				count = 0;
+				for(j=0;j<4;j++)
+				{
+					if(receive[j][i] == 1)
+					{
+						count = count + 1;
+					}
+				}
+				if(count % 2 == 0)
+				{
+					ans2[i] = 0;
+				}
+				else
+				{
+					ans2[i] = 1;
+				}
+			}
+		}
+		void display_answer_for_sender()
+		{
+			cout<<"\n--------------- Display Answer Of Sender --------------\n\n";
+			for(i=0;i<4;i++)
+			{
+				for(j=0;j<8;j++)
+				{
+					cout<<send[i][j]<<" ";
+				}
+				cout<<"\n";
+			}
+			cout<<"----------------\n";
+			for(i=0;i<8;i++)
+			{
+				cout<<ans1[i]<<" ";
+			}
+		}
+		void display_answer_for_receiver()
+		{
+			cout<<"\n--------------- Display Answer of Receiver --------------\n\n";
+			for(i=0;i<4;i++)
+			{
+				for(j=0;j<8;j++)
+				{
+					cout<<receive[i][j]<<" ";
+				}
+				cout<<"\n";
+			}
+			cout<<"----------------\n";
+			for(i=0;i<8;i++)
+			{
+				cout<<ans2[i]<<" ";
+			}
+		}
+		void check_error()
+		{
+			cout<<"\n--------------- Error Status ---------------\n\n";
+			count1 = 0;
+			for(i=0;i<8;i++)
+			{
+				if(ans1[i] != ans2[i])
+				{
+					cout<<"\nThere Is An Error In Data.";
+					break;
+				}
+				else
+				{
+					count1 = count1 + 1;
+				}
+			}
+			if(count1 == 8)
+			{
+				cout<<"\nThere Is No Error In Data.";
+			}
+		}
+};
+int main()
+{
+	LRC L1;
+	L1.get_senders_data();
+	L1.senders_data();
+	L1.get_answer_for_sender();
+	L1.display_answer_for_sender();
+	L1.get_receivers_data();
+	L1.receivers_data();
+	L1.get_answer_for_receiver();
+	L1.display_answer_for_receiver();
+	L1.check_error();
+	return 0;
+}

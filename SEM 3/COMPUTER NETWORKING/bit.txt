@@ -1,0 +1,115 @@
+#include<iostream>
+using namespace std;
+class byte
+{
+ int *sender_arr,*receiver_arr,no,total;
+public:
+void get()
+{
+	cout<<"enter no of bit you want to enter:";
+	cin>>no;
+	sender_arr=new int[no+(no/5)];
+	receiver_arr=new int[no+(no/5)];
+	for(int i=0;i<no;i++)
+	{
+		cout<<"enter bit "<<i+1<<":";
+		cin>>sender_arr[i];
+	}
+	cout<<"\n----------------------------sender side--------------------------------";
+	cout<<"\nbefore byte stuffing:";
+	for(int i=0;i<no;i++)
+	{
+		cout<<sender_arr[i];
+	}
+}
+void sender()
+{
+	int count=0;
+	total=0;
+	for(int i=0;i<no+1;i++)
+	{
+		if(sender_arr[i]==1)
+		{
+			count++;
+		}
+		if(sender_arr[i]==0)
+		{
+			count=0;
+		}
+		if(count==5)
+		{
+			if(sender_arr[i-5]==0)
+			{
+			int temp=sender_arr[i+1],temp1;
+			sender_arr[i+1]=0;
+			for(int j=i;j<no;j++)
+			{
+				temp1=sender_arr[j+2];
+				sender_arr[j+2]=temp;
+				temp=temp1;
+			}
+			count=0;
+			total++;
+			}
+	}
+	}
+	cout<<"\nafter byte stuffing :";
+	for(int i=0;i<no+total;i++)
+	{
+		cout<<sender_arr[i];
+	}
+}
+void receive()
+{
+	for(int i=0;i<no+total;i++)
+	{
+		receiver_arr[i]=sender_arr[i];
+	}
+}
+void receiver()
+{
+	int count=0;
+	for(int i=0;i<no+total;i++)
+	{
+		if(receiver_arr[i]==1)
+		{
+			count++;
+		}
+		if(receiver_arr[i]==0)
+		{
+			count=0;
+		}
+		if(count==5)
+		{
+			if(receiver_arr[i-5]==0)
+			{
+			if(receiver_arr[i+1]==0)
+			{
+			for(int j=i;j<no+(total-1);j++)
+			{
+				receiver_arr[j+1]=receiver_arr[j+2];
+			}
+			count=0;
+			total--;
+			}
+			}
+		}
+	}
+	cout<<"\n--------------------------------receiver side----------------------------";
+	cout<<"\nreceiver side: ";
+	for(int i=0;i<no+total;i++)
+	{
+		cout<<receiver_arr[i];
+	}
+}
+};
+int main()
+{
+byte ob;
+ob.get();
+ob.sender();
+ob.receive();
+ob.receiver();
+return 0;
+}
+

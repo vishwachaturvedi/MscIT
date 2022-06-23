@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>form</title>
+	<link rel="stylesheet" type="text/css" href="myform.css">
+</head>
+<body>
+	<form action="#" method="post">
+	<h3>Personal Details</h3>
+	<b>Name: </b>
+	<input type="text" name="Name" size=20><br><br>
+	<b>Password:  </b>
+	<input type="password" name="Pass" size=20><br><br>
+	<b>E-mail ID:  </b>
+	<input type="text" name="E-mail ID " size=30><br><br>
+	<b>Gender:  </b>
+	<input type="radio" name="Gender" value="Male"/>Male
+	<input type="radio" name="Gender" value="Female"/>Female<br><br>
+	<b> Contact:  </b>
+	<input type="text" name="Contact " size=10><br>
+	<h3>Educational Qualifications </h3>
+	<b>Degree:  </b>
+	<select name="Degree">
+		<option value="--select--">--select--</option>
+		<option value="Bachealors">Bachealors</option>
+		<option value="Masters">Masters</option>
+	</select><br><br>
+	<b>Engineering:  </b>
+	<select name="Engineering">
+		<option value="--select--">--select--</option>
+		<option value="Computer ">Computer</option>
+		<option value="Electrical ">Electrical</option>
+		<option value="Mechanical ">Mechanical</option>
+		<option value="Civil ">Civil</option>
+	</select><br><br>
+	<b>Hobbies: </b>
+	<input type="radio" name="Playing Chess " value="Playing Chess"/>Playing Chess
+	<input type="radio" name="Reading Books " value="Reading Books"/>Reading Books<br>
+	<h3>Address </h3>
+	<textarea name="Address" rows=5 cols=30></textarea><br><br>
+	<b>Attach Resume: </b>
+	<input type="file" name="Choose File"><br><br>
+	<input type="submit" value="SUBMIT"><br><br>
+	</form>
+	<br>
+</body>
+</html>

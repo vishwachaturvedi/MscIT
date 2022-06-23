@@ -1,0 +1,28 @@
+data segment
+    STR1 DB "BMIIT"
+    STR2 DB ?
+data ends
+code segment
+start:
+    ASSUME DS:data,CS:code
+        MOV AX,data
+        MOV DS,AX
+        MOV ES,AX
+        LEA SI,STR1
+        LEA DI,STR2
+        
+        ADD SI,5
+        
+        
+        MOV CX,5
+        CLD
+        Copy:
+        DEC SI
+        DEC SI
+        MOVSB 
+        Loop Copy
+        
+        MOV AX,4C00H
+        INT 21H
+end start
+code ends

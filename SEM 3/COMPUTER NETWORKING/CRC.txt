@@ -1,0 +1,250 @@
+#include<iostream>
+using namespace std;
+
+int data,gen,data1;
+
+class crc
+{
+
+public:
+
+			int *d;
+			int *g;
+			int *tmp;
+			int *rem;
+
+
+			crc()
+			{
+				d=new int[data+(gen-1)];
+				g=new int[gen];
+				tmp=new int[gen];
+				rem=new int[gen-1];
+			}
+			void input()
+			{
+				cout<<"\n\n\tEnter the data :\n";
+
+				for(int i=0;i<data;i++)
+				{
+					cin>>d[i];
+
+					if(d[0]!=1)
+					{
+						cout<<"\n\n\tfirst big must be 1";
+						i--;
+					}
+
+					if(d[i]!=0 and d[i]!=1)
+					{
+						//i--;
+						cout<<"!!OOps wong bit pass ....\nTry again next time\n";
+						return ;
+					}
+				}
+
+				for(int i=data;i<data+(gen-1);i++)
+				{
+					d[i]=0;
+					//cout<<"\nd[i]"<<i;
+				}
+
+				cout<<"\n\n\tEnter the generator:\n";
+				for(int i=0;i<gen;i++)
+				{
+					cin>>g[i];
+
+					if(g[0]!=1)
+					{
+						cout<<"\n\n\tfirst bit must be 1";
+						i--;
+					}
+
+					if(g[i]!=0 and g[i]!=1)
+					{
+						//i--;
+						cout<<"!!OOps wong bit pass ....\nTry again next time\n";
+						return ;
+					}
+				}
+			}
+
+			void remaindergenerater(int f=0)
+			{
+				int uni=gen;
+				int count=gen;
+
+				if(f==1)
+				{
+					data=data1;
+				}
+
+				for(int i=0;i<gen;i++)
+				{
+					tmp[i]=d[i];
+				}
+
+				for(int j=0;j<data;j++)
+				{
+					if(tmp[0]==1)
+					{
+						for(int i=0;i<gen;i++)
+						{
+							if(tmp[i]==g[i])
+							{
+								tmp[i]=0;
+							}
+							else
+							{
+								tmp[i]=1;
+							}
+						}
+					}
+					else
+					{
+						for(int i=0;i<gen;i++)
+						{
+
+							if(tmp[i]==0)
+							{
+								tmp[i]=0;
+							}
+							else
+							{
+								tmp[i]=1;
+							}
+						}
+					}
+					for(int k=0;k<gen-1;k++)
+                    {
+                        tmp[k]=tmp[k+1];
+                    }
+
+                    tmp[gen-1]=d[count];
+                    count++;
+
+                    /*cout<<"\n\n\tRemainders "<<j<<" -.-\n";
+                    for(int u=0;u<gen;u++)
+                    {
+                        cout<<tmp[u];
+                    }*/
+				}
+
+				/*for(int i=0;i<gen-1;i++)
+				{
+					remainder[i]=tmp[i];
+				}*/
+			}
+
+			void display(int l=0)
+			{
+				if(l==1)
+				{
+					data=data+gen-1;
+				}
+
+				cout<<"\n\n\tData is -.- \n\t [";
+				for(int i=0;i<data;i++)
+				{
+					cout<<" "<<d[i];
+				}
+				cout<<" ]";
+			}
+
+			void datamaker()
+			{
+				for(int i=data,j=0;i<data+(gen-1);i++,j++)
+				{
+					d[i]=tmp[j];
+				}
+			}
+
+			void askforchange()
+			{
+
+				int chg,choice;
+
+				while(choice!=2)
+				{
+					cout<<"\n\n\t Do you want to change data ?";
+					cout<<"\n\n\t 1. YES   : ";
+					cout<<"\n\n\t 2. NO    : ";
+					cout<<"\n\n\t Enter your choice : ";
+					cin>>choice;
+
+					if(choice==1)
+					{
+						display();
+						cout<<"Enter the index of bit you want to change : ";
+						cin>>chg;
+
+						if(d[chg-1]==1)
+						{
+							d[chg-1]=0;
+						}
+						else
+						{
+							d[chg-1]=1;
+						}
+					}
+				}
+			}
+
+			void checker()
+			{
+				int error=0;
+				for(int i=0;i<gen-1;i++)
+				{
+					if(tmp[i]==1)
+					{
+						error=1;
+						break;
+					}
+				}
+
+				if(error==1)
+					cout<<"\n\n\tThere is error in data";
+				else
+				cout<<"\n\n\tThere is NO error in data";
+
+
+
+			}
+};
+
+int main()
+{
+	cout<<"\n\n\tEnter the number of bits of Data : ";
+	cin>>data;
+	cout<<"\n\n\tEnter the number of bits of Generator : ";
+	cin>>gen;
+
+	data1=data;
+
+	crc s,r;
+
+	s.input();
+
+	s.remaindergenerater();
+	s.datamaker();
+
+	cout<<"\n\n\tData at sender side";
+	s.display();
+
+	cout<<"\n\n\tData to be sent from sender side";
+	s.display(1);
+
+	r=s;
+	r.askforchange();
+	r.datamaker();
+	r.remaindergenerater(1);
+	cout<<"\n\n\tData recieved at reciever side ";
+	r.display();
+
+	r.checker();
+
+
+return 0;
+}
+
+

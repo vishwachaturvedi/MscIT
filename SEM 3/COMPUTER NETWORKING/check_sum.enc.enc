@@ -1,0 +1,315 @@
+#include<iostream>
+using namespace std;
+class check_sum
+{
+	int send[4][8],ans1[8],sum1[8],ans2[8],sum2[8],i,j,count,count1,receive[4][8];
+
+	public:
+		void get_senders_data()
+		{
+			cout<<"\n--------------- Enter Sender's Data --------------\n\n";
+			
+			for(i=0;i<4;i++)
+			{
+				cout<<"\nEnter Data "<<i+1<<" :- \n\n";
+				for(j=0;j<8;j++)
+				{
+					cout<<"\nEnter Data : ";
+					cin>>send[i][j];
+				}
+			}
+		}
+		void get_receivers_data()
+		{
+			cout<<"\n--------------- Enter Receiver's Data --------------\n\n";
+			
+			for(i=0;i<4;i++)
+			{
+				cout<<"\nEnter Data "<<i+1<<" :- \n\n";
+				for(j=0;j<8;j++)
+				{
+					cout<<"\nEnter Data : ";
+					cin>>receive[i][j];
+				}
+			}
+		}
+		void senders_data()
+		{
+			cout<<"\n--------------- Display Sender's Data ---------------\n\n";
+			for(i=0;i<4;i++)
+			{
+				for(j=0;j<8;j++)
+				{
+					cout<<send[i][j]<<" ";
+				}
+				cout<<"\n";
+			}
+		}
+
+		void receivers_data()
+		{
+			cout<<"\n--------------- Display receiver's Data ---------------\n\n";
+			for(i=0;i<4;i++)
+			{
+				for(j=0;j<8;j++)
+				{
+					cout<<receive[i][j]<<" ";
+				}
+				cout<<"\n";
+			}
+		}
+		void get_answer_for_sender()
+		{
+			//--------------- Find Answer For Sender ----------------
+			for(i=0;i<8;i++)
+			{
+				count = 0;
+				for(j=0;j<4;j++)
+				{
+					if(send[j][i] == 1)
+					{
+						count = count + 1;
+					}
+				}
+				if(count % 2 == 0)
+				{
+					ans1[i] = 0;
+				}
+				else
+				{
+					ans1[i] = 1;
+				}
+			}
+		}
+		void ones_complement_sender()
+		{
+			cout<<"\n---------------------- 1's complement Sender side ----------------------";
+			for(i=0;i<8;i++)
+			{
+				if(ans1[i] == 0)
+				{
+					ans1[i] = 1;
+				}
+				else
+				{
+					ans1[i] = 0;
+				}
+			}
+			for(i=0;i<8;i++)
+			{
+				cout<<ans1[i]<<" ";
+			}
+		}
+		void get_answer_for_receiver()
+		{
+			//--------------- Find Answer For Receiver----------------
+			for(i=0;i<8;i++)
+			{
+				count = 0;
+				for(j=0;j<4;j++)
+				{
+					if(receive[j][i] == 1)
+					{
+						count = count + 1;
+					}
+				}
+				if(count % 2 == 0)
+				{
+					ans2[i] = 0;
+				}
+				else
+				{
+					ans2[i] = 1;
+				}
+			}
+		}
+		void get_answer_for_sender_again()
+		{
+			//--------------- Find Answer For Sender ----------------
+			for(i=0;i<8;i++)
+			{
+				count = 0;
+				for(j=0;j<4;j++)
+				{
+					if(send[j][i] == 1 )
+					{
+						count = count + 1;
+					}
+				}
+				if(ans1[i] == 1)
+				{
+					count = count + 1;
+				}
+				if(count % 2 == 0)
+				{
+					sum1[i] = 0;
+				}
+				else
+				{
+					sum1[i] = 1;
+				}
+			}
+		}
+		void ones_complement_receiver()
+		{
+			cout<<"\n---------------------- 1's complement Receiver Side ----------------------";
+			for(i=0;i<8;i++)
+			{
+				if(ans2[i] == 0)
+				{
+					ans2[i] = 1;
+				}
+				else
+				{
+					ans2[i] = 0;
+				}
+			}
+			for(i=0;i<8;i++)
+			{
+				cout<<ans2[i]<<" ";
+			}
+		}
+		void get_answer_for_receiver_again()
+		{
+			//--------------- Find Answer For Sender ----------------
+			for(i=0;i<8;i++)
+			{
+				count = 0;
+				for(j=0;j<4;j++)
+				{
+					if(send[j][i] == 1 )
+					{
+						count = count + 1;
+					}
+				}
+				if(ans2[i] == 1)
+				{
+					count = count + 1;
+				}
+				if(count % 2 == 0)
+				{
+					sum2[i] = 0;
+				}
+				else
+				{
+					sum2[i] = 1;
+				}
+			}
+		}
+		void display_answer_for_sender()
+		{
+			cout<<"\n--------------- Display Answer Of Sender --------------\n\n";
+			for(i=0;i<4;i++)
+			{
+				for(j=0;j<8;j++)
+				{
+					cout<<send[i][j]<<" ";
+				}
+				cout<<"\n";
+			}
+			for(i=0;i<8;i++)
+			{
+				cout<<ans1[i]<<" ";
+			}
+			cout<<"\n----------------\n";
+			for(i=0;i<8;i++)
+			{
+				cout<<sum1[i]<<" ";
+			}
+			for(i=0;i<8;i++)
+			{
+				if(sum1[i] == 0)
+				{
+					sum1[i] = 1;
+				}
+				else
+				{
+					sum1[i] = 0;
+				}
+			}
+			cout<<"--> ";
+			for(i=0;i<8;i++)
+			{
+				cout<<sum1[i]<<" ";
+			}
+			cout<<": 1's Complement";
+		}
+		void display_answer_for_receiver()
+		{
+			cout<<"\n--------------- Display Answer of Receiver --------------\n\n";
+			for(i=0;i<4;i++)
+			{
+				for(j=0;j<8;j++)
+				{
+					cout<<receive[i][j]<<" ";
+				}
+				cout<<"\n";
+			}
+			for(i=0;i<8;i++)
+			{
+				cout<<ans2[i]<<" ";
+			}
+			cout<<"\n----------------\n";
+			for(i=0;i<8;i++)
+			{
+				cout<<sum2[i]<<" ";
+			}
+			for(i=0;i<8;i++)
+			{
+				if(sum2[i] == 0)
+				{
+					sum2[i] = 1;
+				}
+				else
+				{
+					sum2[i] = 0;
+				}
+			}
+			cout<<"--> ";
+			for(i=0;i<8;i++)
+			{
+				cout<<sum2[i]<<" ";
+			}
+			cout<<": 1's Complement";			
+		}
+		void check_error()
+		{
+			cout<<"\n\n--------------- Error Status ---------------\n\n";
+			count1 = 0;
+			for(i=0;i<8;i++)
+			{
+				if(ans1[i] != ans2[i])
+				{
+					cout<<"\nThere Is An Error In Data.";
+					break;
+				}
+				else
+				{
+					count1 = count1 + 1;
+				}
+			}
+			cout<<"\nCount = "<<count1;
+			if(count1 == 8)
+			{
+				cout<<"\nThere Is No Error In Data.\n";
+			}
+		}
+};
+int main()
+{
+	check_sum C1;
+	C1.get_senders_data();
+	C1.senders_data();
+	C1.get_answer_for_sender();
+	C1.ones_complement_sender();
+	C1.get_answer_for_sender_again();
+	C1.display_answer_for_sender();
+	C1.get_receivers_data();
+	C1.receivers_data();
+	C1.get_answer_for_receiver();
+	C1.ones_complement_receiver();
+	C1.get_answer_for_receiver_again();
+	C1.display_answer_for_receiver();
+	C1.check_error();
+	return 0;
+}

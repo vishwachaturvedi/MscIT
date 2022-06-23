@@ -1,0 +1,33 @@
+data segment
+    str1 db "abhay"
+    count db 0
+    
+ends
+code segment
+    start:
+    assume ds:data, cs:code
+    mov ax,data
+    mov ds, ax
+    mov es, ax
+    mov dh,0
+    cld
+    lea bx,str1
+
+    mov cx,5 
+    
+    mov al,"a"
+    
+    l1:mov ah,[bx]
+    cmp ah,al 
+    je label1
+    jmp label2
+    label1:inc dh
+    label2:  
+    inc bx
+    loop l1
+    
+    mov count,dh
+    mov ax,4c00h
+    int 21h
+ends      
+end start
