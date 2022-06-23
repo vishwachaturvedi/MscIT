@@ -1,0 +1,6 @@
+delimiter //
+create procedure sp_Insert(in c_name varchar(20), in i_name varchar(20),in quantity int,in price int,in source varchar(20),in destination varchar(20),in distance int)
+begin
+insert into tbl_CourierDetail values (c_name,i_name,quantity,price,source,destination,distance,now());
+end//
+delimiter ;

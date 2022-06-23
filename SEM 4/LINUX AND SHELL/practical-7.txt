@@ -1,0 +1,192 @@
+   201806100110127_4-B
+   Vishwa chaturvedi
+
+   Practicallist-6
+   
+  
+cat  dep
+1,production,11
+2,sales,12
+3,marketing,13
+4,manufacturing,14
+
+cat emp
+1,vishwa,1,12000,surat
+2,meera,2,13000,surat
+3,khushi,3,10000,bardoli
+4,khusbhoo,4,4000,vapi
+5,jenish,1,12001,surat
+6,raj,2,12340,vapi
+7,parth,4,12900,dang
+
+cat man
+11,mehul,surat
+12,krishna,vapi
+13,mihika,udhna
+14,nik,velanja
+
+------------------------------------------------------------------------
+NUM:-1
+
+#!/bin/bash
+if [ $# -ne 1 ]
+then
+        echo "enter department name as argument"
+        exit 0
+fi
+
+while read line
+do
+                deptname=$(echo $line | cut -d "," -f2)
+                if [ "$deptname" =  "$1" ]
+                then
+                        deptno=$(echo $line | cut -d "," -f1)
+                        deptmangerid=$(echo $line | cut -d "," -f3)
+                        echo "$detpno"
+                        break
+                fi
+done<dep
+if [ -z "$deptno" ]
+then
+                echo "$1 department not found"
+                exit 0
+fi
+#echo "$deptno-$deptname-$deptmangerid"
+ 
+echo "     employee for $1 department        "
+echo "no    name   dep  netsalary  city"
+grep ",$deptno," emp | sort -k4 -r | while read line
+do
+                empno=$(echo $line | cut -d"," -f1)
+                empname=$(echo $line | cut -d"," -f2)
+                empdep=$(echo $line | cut -d"," -f3)
+                empsalary=$(echo $line | cut -d"," -f4)
+                empcity=$(echo $line | cut -d"," -f5)
+                da=$(echo "$empsalary * 0.4" | bc)
+                hra=$(echo "$empsalary * 0.05" | bc)
+                inc=$(echo "$empsalary * 0.1" | bc)
+                netsalary=$(echo "$empsalary + $da + $hra - $inc - 500" | bc)
+                echo "$empno   $empname $empdep $netsalary $empcity"
+done
+------------------------------------------------------------------------
+NUM:-2
+#!/bin/bash
+if [ $# -ne 1 ]
+then
+        echo "enter employee id as argument"
+        exit 0
+fi
+count=0
+deptno=0
+while read line
+do
+		deptname=$(echo $line | cut -d "," -f2)
+		if [ "$deptname" =  "$1" ]
+		then
+			deptno=$(echo $line | cut -d "," -f1)
+		fi
+		
+
+done<dept
+
+if [ $deptno -eq 0 ]
+then
+		echo "$1 department not found"
+		exit 0
+fi
+
+while read line
+do
+deptno1=$(echo $line | cut -d "," -f3)
+
+		if [ "$deptno1" =  "$deptno" ]
+		then
+			count=$(($count+1))
+		fi
+
+done<emp
+
+if [ $count -eq 0 ]
+then
+		echo "There is no employee of this department $1"
+		exit 0
+fi
+
+echo "count is $count"
+------------------------------------------------------------------------
+NUM:-3
+#!/bin/bash
+if [ $# -ne 1 ]
+then
+        echo "enter employee id as argument"
+        exit 0
+fi
+while read line
+do			empno=$(echo $line | cut -d "," -f1)
+			if [ "$empno" =  "$1" ]
+			then
+                dep=$(echo $line | cut -d "," -f3)
+                empsalary=$(echo $line | cut -d "," -f4)
+			da=$(echo "$empsalary * 0.4" | bc)
+                hra=$(echo "$empsalary * 0.05" | bc)
+                inc=$(echo "$empsalary * 0.1" | bc)
+                netsalary=$(echo "$empsalary + $da + $hra - $inc - 500" | bc)
+			fi
+done<emp	
+while read line
+do			depno=$(echo $line | cut -d "," -f1)
+			if [ "$depno" =  "$dep" ]
+			then
+				depname=$(echo $line | cut -d "," -f2)	
+                		man=$(echo $line | cut -d "," -f3)
+			fi
+done<dep
+while read line
+do			manno=$(echo $line | cut -d "," -f1)
+			if [ "$manno" =  "$man" ]
+			then
+				manname=$(echo $line | cut -d "," -f2)	
+			fi
+done<man
+echo departmantname mangername salary
+echo ----------------------------------------
+echo "$depname      $manname       $netsalary"
+echo ----------------------------------------	
+
+------------------------------------------------------------------------
+NUM:-4
+
+#!/bin/bash
+if [ $# -ne 1 ]
+then
+        echo "enter city name as argument"
+        exit 0
+fi
+
+sort -n -t"'" -k1 emp while read line
+do
+                cityname=$(echo $line | cut -d "," -f5)
+                if [ "$cityname" =  "$1" ]
+                then
+                        empno=$(echo $line | cut -d "," -f1)
+                        empname=$(echo $line | cut -d "," -f2)
+                        empsalary=$(echo $line | cut -d "," -f3)
+                        empdep=$(echo $line | cut -d "," -f4)
+                        echo "$empno $empname $empsalary $empdep"
+
+                fi
+done
+-----------------------------------------------------------------------
+NUM:-5
+sort -t"," -k3 man | while read line
+do
+		             manno=$(echo $line | cut -d "," -f1)	
+	 			  manname=$(echo $line | cut -d "," -f2)
+                        mancity=$(echo $line | cut -d "," -f3)
+				  echo "$manno $manname $mancity "
+                
+			                       
+              
+done
+
+

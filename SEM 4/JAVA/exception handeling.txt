@@ -1,0 +1,14 @@
+class myexception extends Exception
+{
+	public string toString()
+	{
+	return "please provide different source and destination";
+
+
+	}
+
+
+}
+
+
+

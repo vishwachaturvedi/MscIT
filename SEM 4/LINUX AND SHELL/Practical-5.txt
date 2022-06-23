@@ -1,0 +1,190 @@
+201806100110127_4-B
+Vishwa chaturvedi
+Practicallist-5
+
+1. 
+[root@localhost ~]# head -1 file1
+ line one 
+-----------------------------------------
+2. 
+[root@localhost ~]# tail -n 5 file2
+0
+1
+2
+3
+vishwachaturvedi
+-----------------------------------------
+3. 
+[root@localhost ~]# head -10 demo | tail -5
+mom
+dad
+mihika
+3
+38
+-----------------------------------------
+4. 
+[root@localhost ~]# head data1.txt | cat>>data2.txt
+-----------------------------------------
+5. 
+[root@localhost ~]# cat vish.txt>file2
+-----------------------------------------
+6. 
+[root@localhost ~]# head -1 file1 >file2
+-----------------------------------------
+7. 
+[root@localhost ~]# head -2 unix.dat | tail -1 | wc -c
+7
+-----------------------------------------
+8.
+[root@localhost ~]# head -1 unix.dat | wc -c
+13
+-----------------------------------------
+9. 
+[root@localhost ~]# cat unix.dat | tr '[a-z]''[A-Z]'
+linux file
+data
+wish
+world
+heaven
+12345
+9
+38
+798
+-----------------------------------------
+10. 
+[root@localhost ~]# sed 's/[0-9]//g' unix.dat
+linux file
+data
+wish
+world
+heaven
+ 
+ 
+ 
+ 
+-----------------------------------------
+11. 
+[root@localhost ~]# cat unix.dat | tr '[a-zA-Z]''[A-Za-z]'
+linux file
+data
+wish
+world
+heaven
+12345
+9
+38
+798
+-----------------------------------------
+12.
+[root@localhost ~]# sort -k1 emp.dat
+13
+17
+45
+85
+12
+qwe
+rty
+uio
+plm
+-----------------------------------------
+13.
+[root@localhost ~]# sort -u parts.txt
+1657867
+68613
+a
+adju
+ahgsfjahkf
+b
+c
+d
+e
+f
+g
+h
+-----------------------------------------
+14.
+[root@localhost ~]# sort -k3 -k4 student
+1430
+2410
+vishwa
+mihika
+krishna
+mehul
+-----------------------------------------
+15.
+[root@localhost ~]# sort -c -k1 parts.txt
+Check line 8
+-----------------------------------------
+16.
+[root@localhost ~]# sort -r -k4 parts.txt
+p
+o
+n
+m
+l
+k
+j
+nfjwehfejkfn
+anfkjkej
+a
+6154212
+1484847
+-----------------------------------------
+17.
+[root@localhost ~]# awk '{print $1,$2}' student
+vishwa
+krishna
+mihika
+mehul
+123456
+789456
+-----------------------------------------
+18.
+[root@localhost ~]# sort -k4 -k2 student
+123456
+789456
+mehul
+mihika
+vishwa
+krishna
+-----------------------------------------
+19. [root@localhost ~]# cut -c
+-----------------------------------------
+20. 
+-----------------------------------------
+21.
+[root@localhost ~]# awk '{print $1,$2,$4}' parts.txt | grep '\<[0-9]\{,4\}\.[0-9]\{,4\}\>'
+-----------------------------------------
+22. 
+-----------------------------------------
+23. [root@localhost ~]# cut -c
+-----------------------------------------
+24.
+[root@localhost ~]# sort -u friendslist
+/..,.jo
+khushboo
+khushi
+meera
+jenish
+raj
+8
+lipi
+urvisha
+hurrrrrrr
+-----------------------------------------
+25.
+[root@localhost ~]# uniq -d friendslist
+-----------------------------------------
+26.
+[root@localhost ~]# sort -b friendslist
+/..,.jo
+khushboo
+khushi
+meera
+jenish
+raj
+8
+lipi
+urvisha
+hurrrrrrr
+

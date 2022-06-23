@@ -1,0 +1,12 @@
+create table Employee
+(Username varchar(20) unique primary key,
+Password varchar(20) not null);
+
+create table Account
+(AccountNumber bigint primary key,
+Aadhar bigint unique not null,
+Address varchar(50) not null,
+Age int not null,
+Gender varchar(7) not null,
+Balance int not null,
+OpeningDate date not null);
