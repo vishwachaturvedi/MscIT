@@ -1,0 +1,38 @@
+1.function without parameter and no return type
+
+void demo()
+{
+printf("hello world");
+}
+
+2.function with paramater and no return type
+
+void oddeve(int n1)
+{
+	if(n1 %2==0)
+	{
+		printf("n1 is EVEN number");
+	}
+	else
+	{
+		printf("n1 is  ODD number");
+	}
+
+}
+3.function with return type and function with return type
+
+int mymax(int n1,n2)
+{
+	int result;
+	if(n1>n2)
+	{
+		result=n1;
+	}
+
+	else
+	{
+		result=n2;
+	}
+	return result;
+
+}
