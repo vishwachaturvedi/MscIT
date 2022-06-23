@@ -1,0 +1,41 @@
+create project index.html
+
+html
+head 
+body
+	form action ="next page name"
+
+filed_name inpute_type="type" name="..."
+          		      vlaue"..."
+			      reduired"..."
+body
+head
+html
+===================================================
+ser
+resp.setContent
+printwriter out
+
+srting variavble_name= req.getParameter(index's fild name)
+
+Date dt = new Date();
+out.println("");
+
+httpsessiion com=req.getsession
+
+com.setAttribute("variable",variable)
+out.println("we are here to help "+variable_name+"msg ");
+ out.println("<a href=\"next_servlet\">click here to show Detilas </a>");
+
+=========================================================================================
+
+ser
+resp.setContent
+printwriter out
+
+HttpSession Com=req.getSession(false);
+
+string variable=com.getattribute("variable")
+
+out.println("msg comment +variable name")
+

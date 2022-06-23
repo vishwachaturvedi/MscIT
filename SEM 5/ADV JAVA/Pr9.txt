@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Color code</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+    <center>
+        <form action="checkcolor">
+        <div  style="background-color:cyan">
+            Enter Color code:
+            <input type="color" name="colorcode"><br>
+            <input type="submit" value="SUBMIT">
+        </div>
+       </form> 
+    </center>
+    </body>
+</html>
+=========================================================================================
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author Priya Kanabar
+ */
+public class Get_Value extends HttpServlet {
+    
+    
+     int count=0;
+    String viewcolor="";
+    @Override
+    public void service(HttpServletRequest req,HttpServletResponse res) throws IOException
+    {
+         res.setContentType("text/html");
+            PrintWriter pw=res.getWriter();
+         if(count==0)
+         {
+            String color=req.getParameter("colorcode");
+            Cookie colour=new Cookie("colorcode",color);
+            colour.setMaxAge(60*60*24);
+            res.addCookie(colour); 
+            pw.println("<center>Color selected</center>");
+             
+           
+         }       
+     
+        
+        else if(count>=1)
+        {
+            Cookie view[]=req.getCookies();
+            for(Cookie c:view)
+            {
+                 viewcolor=c.getValue();  
+            }
+            pw.println("<html>");
+            pw.println("<body style='background-color:"+viewcolor+"'>");
+            pw.println("<center>");
+            
+            pw.println("color code selected by you is "+viewcolor);
+            pw.println("</center>");
+            pw.println("</body>");
+            pw.println("</html>");
+       
+        }
+       else{
+                pw.println("something went wrong");
+            }
+        
+            count=count+1;
+    }
+}
+============================================================================================
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	 version="3.1">
+    <servlet>
+        <servlet-name>Check</servlet-name>
+        <servlet-class>Get_Value</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Check</servlet-name>
+        <url-pattern>/checkcolor</url-pattern>
+    </servlet-mapping>
+</web-app>
+
+   

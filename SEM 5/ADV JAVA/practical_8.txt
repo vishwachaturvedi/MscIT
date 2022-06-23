@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Shopping</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body style="background-color: cyan">
+    <center>
+        <fieldset>
+            <legend>SHOPPING CART </legend>
+        <form  method="post" action="cart">
+        <div>
+            <table>
+                <tr>
+                    <td><input type="checkbox" name="List" value="Biscuit">
+                        <label>Bourbon Biscuit(price 20 rupees)</label><br></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="List" value="Chocolate">
+                        <label>Dairy Milk Silk (price 80 rupees</label><br></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="List" value="IceCream">
+                        <label>chocolate Ice-cream (price 60 rupees) </label><br></td>
+                </tr>
+                <tr>
+                    <td> <input type="checkbox" name="List" value="LaysWafers">
+                        <label>Lays Wafers (price 20 rupees) </label><br></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="List" value="ColdDrinks">
+                        <label>Cold-Drinks(40ml)(price 40 rupees) </label><br></td>
+                </tr>
+            </table>
+            
+            <center><input type="submit" value="proceed"></center>
+          </div>
+        </form>
+      </fieldset>
+    </center>
+    </body>
+</html>
+=======================================================================================
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author Priya Kanabar
+ */
+public class Get_CartDetails extends HttpServlet {
+      String FinalList="";
+      String FinalPrice="";
+      float Total=0;
+    @Override
+    public void service(HttpServletRequest req,HttpServletResponse res) throws IOException
+    {
+         PrintWriter pw = res.getWriter();
+         res.setContentType("text/html");
+        String[] list =req.getParameterValues("List");     
+        
+        if(list!=null && list.length>0)
+        {
+         for(String list_shopping:list)
+          {
+              if(list_shopping.equals("Biscuit"))
+              {
+                  Total=Total+20;
+              }
+              if(list_shopping.equals("Chocolate"))
+              {
+                  Total=Total+80;
+              }
+              if(list_shopping.equals("IceCream"))
+              {
+                  Total=Total+60;
+              }
+              if(list_shopping.equals("LaysWafers"))
+              {
+                  Total=Total+20;
+              }
+              if(list_shopping.equals("ColdDrinks"))
+              {
+                  Total=Total+40;
+              }
+                 FinalList=FinalList+list_shopping+"_";
+          }
+         FinalPrice = String.valueOf(Total);
+        
+         pw.println("<form action='view'>");
+         pw.println("<center style='background-color: cyan'>");
+        pw.println("<input type='submit' value='View Details'>");  
+         pw.println("</center>");
+        pw.println("</form>");
+        Cookie flist=new Cookie("List",FinalList);
+        Cookie price=new Cookie("Price",FinalPrice);
+        res.addCookie(flist);
+        res.addCookie(price);
+        }
+        else
+        {
+            pw.println("<html>");
+            pw.println("<body style='background-color:cyan'>");
+            pw.println("<center>");
+            pw.println("You have not selected any product please select product from home page <br>");
+            pw.println("<a href='index.html'>HOMEPAGE</a>");
+            pw.println("</center>");
+            pw.println("</body>");
+            pw.println("</html>");
+        }
+        
+    }
+}
+=======================================================================
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author HP
+ */
+public class View_Details extends HttpServlet{
+    
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
+    {
+        resp.setContentType("text/html");
+        PrintWriter pw=resp.getWriter();
+        pw.println("<center style='background-color:cyan';><h1><b> BILL </b> </h1></center><br><br>");
+        //pw.println("<b>Hello..! </b> ABC <br> Welcome again to my website<br>");
+        Cookie flist[]=req.getCookies();
+        if(flist==null)
+        {
+            pw.println("please select items...!");
+        }
+        else
+        {
+            for(Cookie c:flist)
+            {
+                String temp=c.getName();
+                if(temp.equals("List"))
+                {
+                pw.println("<center>");
+                pw.println("<b>List of shopping: </b>  "+c.getValue()+"<br><br> ");
+                pw.println("</center>");
+                }
+            }
+            for(Cookie c:flist)
+            {
+                String temp=c.getName();
+                if(temp.equals("Price"))
+                {
+                 pw.println("<center>");
+                 pw.println("<b>Total Bill:</b> "+c.getValue()+"<br>");
+                 pw.println("</center>");
+                }
+                
+            }
+        }  
+
+    } 
+    
+}
+=============================================================
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	 version="3.1">
+    <servlet>
+        <servlet-name>shopping</servlet-name>
+        <servlet-class>Get_CartDetails</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>shopping</servlet-name>
+        <url-pattern>/cart</url-pattern>
+    </servlet-mapping>
+    
+      <servlet>
+        <servlet-name>shopping1</servlet-name>
+        <servlet-class>View_Details</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>shopping1</servlet-name>
+        <url-pattern>/view</url-pattern>
+    </servlet-mapping>
+    
+</web-app>

@@ -1,0 +1,66 @@
+index.html
+
+<html>
+    <head>
+        <title>Session Information</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <a href="InfoServlet">Click here to view session information</a>
+    </body>
+</html>
+
+-----------------------------------------------------------------------------
+
+InfoServlet.java
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+public class InfoServlet extends HttpServlet 
+{
+     int count;
+     public void init() throws ServletException
+     {
+          count= 0;
+     }
+    public void service(HttpServletRequest req,HttpServletResponse res) throws IOException,ServletException
+    {
+        res.setContentType("text/html");
+        PrintWriter pw=res.getWriter();
+        HttpSession s = req.getSession(true);
+        String timeformat="hh:mm:ss";
+        SimpleDateFormat obj=new SimpleDateFormat(timeformat);
+        
+        count++;
+        pw.println("-------------Servlet Information---------<br>");
+        pw.println("Session ID : "+s.getId()+"<br>");
+        pw.println("Creation Time : "+obj.format(s.getCreationTime())+"<br>");
+        pw.println("Last accessed Time : "+obj.format(s.getLastAccessedTime())+"<br>");
+        pw.println("Total number of times page accessed : "+count+"<br>");
+    }
+
+}
+
+---------------------------------------------------------------------------
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>InfoServlet</servlet-name>
+        <servlet-class>InfoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InfoServlet</servlet-name>
+        <url-pattern>/InfoServlet</url-pattern>
+    </servlet-mapping>
+</web-app>
+

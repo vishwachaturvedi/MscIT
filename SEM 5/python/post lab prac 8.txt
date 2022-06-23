@@ -1,0 +1,22 @@
+PRACTICAL 8
+
+POST LAB QUESTIONS
+
+QUE 1 : What is function?
+ANS 1 : A function is a block of code which only runs when it is called.You can pass data, known as parameters, into a function.A function can return data as a result.
+
+
+QUE 2 : What is Recursive function?
+ANS 2 : Python also accepts function recursion, which means a defined function can call itself.Recursion is a common mathematical and programming concept. It means that a function calls itself. This has the benefit of meaning that you can loop through data to reach a result.
+
+
+QUE 3 : Python function always returns a value.
+ANS 3 : True
+
+
+QUE 4 : What is the default return value for a function that does not return any value explicitly?
+ANS 4 : "None" is the default return value for a function that does not return any value explicitly
+
+ 
+QUE 5 : Which of the keyword will use for the beginning of the function block?
+ANS 5 : def keyword will use for  the beginning of the function block.

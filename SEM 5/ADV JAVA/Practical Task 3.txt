@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Login Count in Servlet & Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form method="post" action="signin">
+            <div>Login</div>
+            <br>
+            <input type="text" name="username">
+            <input type="password" name="password">
+            <input type="submit" value="LOGIN">
+        </form>
+    </body>
+</html>
+===============================================
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author HP
+ */
+public class serveletcontext extends HttpServlet{
+    
+    @Override
+    public void service (HttpServletRequest req,HttpServletResponse rep) throws IOException, ServletException
+    {
+        RequestDispatcher rd;
+        PrintWriter pw = rep.getWriter();
+        
+        String user = req.getParameter("username");
+        String pass = req.getParameter("password");
+        
+        ServletContext sc = getServletContext();
+        
+        String u = sc.getInitParameter("fname");
+        String p = sc.getInitParameter("passwd");
+        
+        if(user.equals(u) && pass.equals(p))
+        {
+            rd = req.getRequestDispatcher("context_servlet");
+            req.setAttribute("Name",user);
+            
+            rd.forward(req, rep);
+        }
+        else
+        {
+            rd = req.getRequestDispatcher("/index.html");
+            rd.include(req,rep);
+            pw.println("Invalid User..!!");
+        }
+    }
+    
+}
+=========================================================
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class servletcontext1 extends HttpServlet{
+    
+    @Override
+    public void service (HttpServletRequest req,HttpServletResponse rep) throws IOException
+    {
+    PrintWriter pw = rep.getWriter();
+    
+    String u1 = (String)req.getAttribute("Name");
+    
+    pw.println("Hello " +u1);
+    }
+}
+=======================================================
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	 version="3.1">
+    
+    <context-param>
+        <param-name>fname</param-name>    
+        <param-value>javalogin</param-value>
+    </context-param>
+    
+    <context-param>
+        <param-name>passwd</param-name>    
+        <param-value>java</param-value>
+    </context-param>
+    
+    <servlet>
+        <servlet-name>login</servlet-name>
+        <servlet-class>serveletcontext</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>login</servlet-name>
+        <url-pattern>/signin</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>login2</servlet-name>
+        <servlet-class>servletcontext1</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>login2</servlet-name>
+        <url-pattern>/context_servlet</url-pattern>
+    </servlet-mapping>
+    
+</web-app>
+=============================================

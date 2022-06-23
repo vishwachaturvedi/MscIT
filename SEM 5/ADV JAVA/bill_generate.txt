@@ -1,0 +1,179 @@
+
+<html>
+    <head>
+        <title>Bill Generation</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    
+    <style>
+        p.ex1 {
+            margin-left: 10%;
+        }
+    </style>
+    
+    <body bgcolor="red" font>
+        <h2><b><i><u><div><center>Enter the Details to Generate Bill</center></b></i></u></div></h2>
+                    
+                    
+            <form method="post" action="billing">
+            <br>
+            <br>
+            <p class="ex1" style="font-family:cambria;font-size:16px;font-style:bold;">
+            <label for ="number">Customer number</label><br>
+            <input type="text" name="number"><br><br
+                
+            <label for ="name">Customer name</label><br>
+            <input type="text" name="name"><br><br>
+            
+            <label for ="address">Customer Address</label><br>
+            <textarea id="address"  name="address" rows="3" cols="50"></textarea><br><br>
+            
+            <label for ="due_date">Duration of bill</label><br>
+            <input type="date" name="due_date"><br><br
+                
+            <label for ="units">Used units</label><br>               
+            <input type="text" name="units"><br><br>
+            
+            <input type="Submit" value="GENERATE BILL"><br><br></p>
+        </form>
+    </body>
+</html>
+
+=================================================================================
+
+
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+public class Bill extends HttpServlet{
+    
+    @Override
+    public void service(HttpServletRequest req,HttpServletResponse rep) throws IOException, ServletException
+    {
+        String cnum = req.getParameter("number");
+        String cname = req.getParameter("name");
+        String add = req.getParameter("address");
+        String date = req.getParameter("due_date");
+        int unit = Integer.parseInt(req.getParameter("units"));
+        float count;
+        
+        PrintWriter pw = rep.getWriter();
+        RequestDispatcher rd;
+        
+        if (unit < 100)
+        {
+            count = (float) ((unit * 20) + ((unit * 18) * 0.01)); 
+        }
+        else if(unit > 100 && unit < 280)
+        {
+            float count1 = (float) (unit * 25) + ((unit * 18) / 100);
+            count = (float) ((unit * 20) + ((unit * 18)/100)+ unit) - count1;
+            
+        }
+        else
+        {
+            float count1 = (float) (unit * 25) + ((unit * 20) / 100);
+             count = (float) ((unit * 20) + ((unit * 18)/100) + unit) - count1;
+        }
+            
+        rd = req.getRequestDispatcher("bill_make");
+        req.setAttribute("cn",cnum);
+        req.setAttribute("na",cname);
+        req.setAttribute("ad",add);
+        req.setAttribute("dd",date);
+        req.setAttribute("un",unit);
+        req.setAttribute("co",count);
+        rd.forward(req,rep);
+    }
+    
+}
+
+===============================================================================
+
+
+
+import static java.awt.Color.black;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+public class get_bill_data extends HttpServlet{
+    
+    @Override
+    public void service(HttpServletRequest req,HttpServletResponse rep) throws IOException
+    {
+        rep.setContentType("text/html");
+        
+        String cnum = (String) req.getAttribute("cn");
+        String cname = (String) req.getAttribute("na");
+        String add = (String) req.getAttribute("ad");
+        String date = (String) req.getAttribute("dd");
+        int unit = (int) req.getAttribute("un");
+        float count = (float) req.getAttribute("co");
+        
+        PrintWriter pw = rep.getWriter();
+        
+        pw.println("<body bgcolor=orange>");
+        pw.println("<center><b><u><h1><p style=color:red>Bill Details</h1></b></u></p><center>");
+        pw.println("<b><center>*******************************************</b></center>");
+        pw.println("<center><h3 style=color:purplr;>");
+        pw.println("Customer number : "+cnum);
+        pw.println("<br>");
+        pw.println("Customer name : "+cname);
+        pw.println("<br>");
+        pw.println("Customer's Address : "+add);
+        pw.println("<br>");
+        pw.println("Duration of bill : "+date);
+        pw.println("<br>");
+        pw.println("Used Units : "+unit);
+        pw.println("<br>");
+        pw.println("Total Ammount : "+count);
+        pw.println("</h3><b><center>********************************************</b></center>");
+        pw.println("<br></center>");
+    }
+}
+
+
+=========================================================================
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	 version="3.1">
+
+    <servlet>
+        <servlet-class>Bill</servlet-class>
+        <servlet-name>BillGeneration</servlet-name>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BillGeneration</servlet-name>
+        <url-pattern>/billing</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-class>get_bill_data</servlet-class>
+        <servlet-name>bill_create</servlet-name>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>bill_create</servlet-name>
+        <url-pattern>/bill_make</url-pattern>
+    </servlet-mapping>
+    
+    
+    
+</web-app>

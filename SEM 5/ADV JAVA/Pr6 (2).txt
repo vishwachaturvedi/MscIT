@@ -1,0 +1,211 @@
+index.html
+
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>User Input Form</title>
+        <style> 
+            form{ 
+            width: 25%; 
+            } 
+            .button{
+                padding: 8px 25px;
+                text-align: center;
+            }
+        </style>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form method="get" action="TranslateServlet"> 
+            <h2>User Input Form</h2>
+            <fieldset>
+                <legend>Personal Particular</legend>
+                Name: <input type="text" name="username" /><br /><br />
+                Password: <input type="password" name="password" /><br /><br />
+                Gender: <input type="radio" name="gender" value="m" checked />Male
+                <input type="radio" name="gender" value="f" />Female<br /><br />
+                Age: <select name = "age">
+                  <option value="1">&lt; 1 year old</option>
+                  <option value="99">1 to 99 years old</option>
+                  <option value="100">&gt; 99 years old</option>
+                </select>
+            </fieldset>
+            <fieldset>
+                <legend>Languages</legend>
+                <input type="checkbox" name="language" value="java" />Java
+                <input type="checkbox" name="language" value="c" />C/C++
+                <input type="checkbox" name="language" value="cs" />C#
+            </fieldset>
+            <fieldset>
+                <legend>Instruction</legend>
+                <textarea rows="5" cols="30" name="instruction">Enter your instruction here...</textarea>
+            </fieldset>
+            
+            <input type="submit" class="button" value="SEND" />
+            <input type="reset" class="button" value="CLEAR" />
+        </form>               
+    </body>
+</html>
+
+-------------------------------------------------------------------------------------------------------------------------------------
+TranslateServle.java
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet(urlPatterns = {"/TranslateServlet"})
+public class TranslateServlet extends HttpServlet 
+{
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
+    {
+        resp.setContentType("text/html");
+        PrintWriter pw=resp.getWriter();
+        
+        String name=req.getParameter("username");
+        String password=req.getParameter("password");
+        String gender=req.getParameter("gender");
+        String age=req.getParameter("age");
+        String language=req.getParameter("language");
+        String instruction=req.getParameter("instruction");
+        
+        pw.println("<b>Hello..! </b>" + name + "<br>");
+        pw.println("<a href='echo?name="+name+" &password="+password+" &gender="+gender+" &age="+age+" &language="+language+" &instruction="+instruction+"'> Click here to show all details </a>"); 
+    }
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Echoservlet.java
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Enumeration;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+public class EchoServlet extends HttpServlet 
+{
+
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
+    @Override
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+    {
+        
+      response.setContentType("text/html; charset=UTF-8");
+      PrintWriter out = response.getWriter();
+
+      try 
+      {
+         out.println("<!DOCTYPE html>");
+         out.println("<html><head>");
+         out.println("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>");
+         out.println("<title>Echo Servlet</title></head>");
+         out.println("<body><h2>You have enter</h2>");
+ 
+         String username = request.getParameter("name");
+         out.println("<p>Name: " + username + "</p>");
+          
+         String password = request.getParameter("password");
+         out.println("<p>Password: " + password + "</p>");
+ 
+         String gender = request.getParameter("gender");
+
+	if (gender.equals("m")) 
+         {
+            out.println("<p>Gender: male</p>");
+         } 
+         else 
+         {
+            out.println("<p>Gender: female</p>");
+         }
+ 
+         String age = request.getParameter("age");
+         if (age.equals("1")) 
+         {
+            out.println("<p>Age: &lt; 1 year old</p>");
+         } 
+         else if (age.equals("99")) 
+         {
+            out.println("<p>Age: 1 to 99 years old</p>");
+         } 
+         else 
+         {
+            out.println("<p>Age: &gt; 99 years old</p>");
+         }
+ 
+ 
+         String[] languages = request.getParameterValues("language");
+         out.println("<p>Languages: ");
+         for (String language : languages) 
+         {
+             out.println(language);
+         }
+ 
+         
+         String instruction = request.getParameter("instruction");
+         out.println("<p>Instruction: " + instruction + "</p>");
+
+         out.println("<a href='index.html'><input type=\"submit\" class=\"button\" value=\" Back \" /></a>");
+ 
+         out.println("</body></html>");
+    }
+      finally 
+      {
+         out.close();  // Always close the output writer
+      }
+    }   
+}
+-------------------------------------------------------------------------------------------------------------------------------------
+web.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>TranslateServlet</servlet-name>
+        <servlet-class>TranslateServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EchoServlet</servlet-name>
+        <servlet-class>EchoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TranslateServlet</servlet-name>
+        <url-pattern>/TranslateServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EchoServlet</servlet-name>
+        <url-pattern>/echo</url-pattern>
+    </servlet-mapping>
+</web-app>

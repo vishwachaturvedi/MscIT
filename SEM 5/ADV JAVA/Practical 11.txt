@@ -1,0 +1,189 @@
+index.html
+------------------
+<html>
+    <head>
+        <title>Resume Viewer</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div align="center">
+            <h2>Resume Viewer System</h2>
+            <h3>Index Page</h3> <br>
+            <a href="Login.html">Login </a> <br>
+            <a href="./Profile">Profile</a> <br>
+            <a href="./Logout">Logout  </a>
+        </div>
+    </body>
+</html>
+
+--------------------------------------------------------------------------------------
+
+Login.html
+------------------
+<html>
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div align="center">
+        <h1>Login Page</h1>
+        <form action="Loginservlet" method="post">
+            Username <input type="text" name="uname"><br><br>
+            Password <input type="password" name="pass"><br><br>
+            <input type="submit" value="Login">
+        </form>
+        </div>
+    </body>
+</html>
+----------------------------------------------------------------------------------------
+
+Loginservlet.java
+------------------
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+
+public class Loginservlet extends HttpServlet 
+{
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException 
+    {
+        res.setContentType("text/html");
+        String u=req.getParameter("uname");
+        String p=req.getParameter("pass");
+        PrintWriter pw=res.getWriter();
+        HttpSession session=req.getSession();
+	
+        if(u.equals("xyz")&& p.equals("1234"))
+        {
+            session.setAttribute("uname",u);
+            res.sendRedirect("./Profile");
+        }
+        else
+        {
+            res.sendRedirect("Login.html");
+            pw.println("Wrong username or password");
+        }
+    }
+
+}
+---------------------------------------------------------------------------------------------------------------
+
+Profile.java
+-----------------
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+public class Profile extends HttpServlet 
+{
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException 
+    {
+        res.setContentType("text/html");
+        PrintWriter pw=res.getWriter();
+        HttpSession session=req.getSession(false);
+        if(session!=null)
+        {
+            
+            String uname=(String)session.getAttribute("uname");
+            pw.println("<div>");
+            pw.println("Resume  <br><hr>");
+            pw.println("Personal Information <br>");
+            pw.println("Name :  "+ uname+"<br>");
+            pw.println("Date of birth : 14/4/1998 <br>");
+            pw.println("Email : abc@gmail.com <br>");
+	    pw.println("Contact Number : 8250891145 <br>");
+            pw.println("<br><br><hr>");
+            pw.println("Professional Information <br><hr>");
+            pw.println("Last Job : Developer ");
+            pw.println("Experience : 2 years");
+            pw.println("<br><br>");
+            pw.println("Educational Information <br><hr>");
+            pw.println("Education : Integrated Msc IT ");
+            pw.println("<div>");
+            
+        }
+        else
+        {
+            res.sendRedirect("login.html");
+        }
+	
+        pw.println("<a href='index.html'>Index</a>");
+    }
+}
+-------------------------------------------------------------------------------------------------
+
+Logout.html
+------------------
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+public class Logout extends HttpServlet 
+{
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException 
+    {
+        res.setContentType("text/html");
+        PrintWriter pw=res.getWriter();
+        HttpSession session=req.getSession(false);
+        session.invalidate();
+        pw.println("You are successfully logged out..!");
+		pw.println("<br>");
+        pw.println("<a href='index.html'>Index</a>");
+    } 
+
+}
+------------------------------------------------------------------------------------------------
+
+web.xml
+------------------------
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>Profile</servlet-name>
+        <servlet-class>Profile</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>Logout</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Loginservlet</servlet-name>
+        <servlet-class>Loginservlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Profile</servlet-name>
+        <url-pattern>/Profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Loginservlet</servlet-name>
+        <url-pattern>/Loginservlet</url-pattern>
+    </servlet-mapping>
+</web-app>
+

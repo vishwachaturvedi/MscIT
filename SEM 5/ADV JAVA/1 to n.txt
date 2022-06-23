@@ -1,0 +1,103 @@
+<html>
+    <head>
+        <title>Prints 1 TO N</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div></div>
+        
+        <form method="=post" action="print">
+            <br>
+            <b><input type="text" name="num"></b>
+            
+            <input type="Submit" value="SUBMIT">
+        </form>
+        
+    </body>
+</html>
+
+===============================================================================
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class Number extends HttpServlet{
+    
+    @Override
+    public void service (HttpServletRequest req,HttpServletResponse rep) throws IOException, ServletException
+    {
+        
+        int n = Integer.parseInt(req.getParameter("num"));
+        RequestDispatcher rd;
+        PrintWriter pw = rep.getWriter();
+        
+        rd = req.getRequestDispatcher("/Number2");
+        req.setAttribute("no", n);
+        rd.forward(req,rep);
+    }
+}
+
+
+================================================================================
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-class>Number</servlet-class>
+        <servlet-name>n1</servlet-name>
+    </servlet>
+    <servlet>
+        <servlet-name>Number2</servlet-name>
+        <servlet-class>Number2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>n1</servlet-name>
+        <url-pattern>/print</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Number2</servlet-name>
+        <url-pattern>/Number2</url-pattern>
+    </servlet-mapping>
+</web-app>
+
+============================================================================\\\
+
+
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class Number2 extends HttpServlet {
+
+    @Override
+    public void service(HttpServletRequest req,HttpServletResponse rep) throws IOException
+    {       
+    
+        rep.setContentType("text/html");
+        int i = 0;
+        PrintWriter pw = rep.getWriter();
+        
+        int number = (int) req.getAttribute("no");
+        
+           pw.println("<body bgcolor=grey>");
+        while (i <= number)
+        {
+            pw.println("<b><h3>");
+            pw.println(i);
+            pw.println("<br>");
+            i =i + 1;
+            pw.println("</b></h3>");
+            pw.println("</body>");
+        }
+        
+    }
+}

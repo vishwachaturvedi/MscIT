@@ -1,0 +1,76 @@
+1) How to specify private member and method in class?
+=  In Python, there is no existence of Private methods that cannot be accessed except inside a class. 
+      However, to define a private method prefix the member name with double underscore “__”.
+
+2) How to access super class method?
+= method inside the overridden method. Using Super(): Python super() function provides us the facility to refer to the parent class explicitly. 
+      It is basically useful where we have to call superclass functions. 
+      It returns the proxy object that allows us to refer parent class by 'super'.
+
+3) What is the purpose of __init__ () and __del__() function?
+=  _init_() :
+		"__init__" is a reseved method in python classes. It is called as a constructor in object oriented terminology.
+		 This method is called when an object is created from a class and it allows the class to initialize the attributes of the class.
+      _del_() :
+		The __del__() method is a known as a destructor method in Python. It is called when all references to the object have been deleted 
+		i.e when an object is garbage collected.
+
+4) How to derive child class from base class in python? Write down code for it.
+= Inheritance is the capability of one class to derive or inherit the properties from another class.
+class Person(object): 
+    def __init__(self, name): 
+        self.name = name 
+    def getName(self): 
+        return self.name
+    def isEmployee(self): 
+        return False
+class Employee(Person): 
+    def isEmployee(self): 
+        return True
+emp = Person("Geek1")  # An Object of Person 
+print(emp.getName(), emp.isEmployee()) 
+   
+emp = Employee("Geek2") # An Object of Employee 
+print(emp.getName(), emp.isEmployee()) 
+
+
+5) Explain below in-build methods with example:
+	__add__()
+	__truediv__()
+	__eq__()
+	__gt__()
+	__iadd__()
+= _add_() :
+		when you add two numbers using the + operator, internally, the __add__() method will be called.
+		e.g num=10
+		    num + 5
+      __truediv__() :
+		The __truediv__() method is used when __future__.division is in effect, otherwise __div__() is used. If only one of these two methods is defined, the object will not support division in the alternate context;
+		 TypeError will be raised instead.
+		e.g object.__div__(self, other) 
+		    object.__truediv__(self, other)
+      __eq__() :
+		The a == b expression invokes A.__eq__, since it exists. Its code includes self.value == other. Since int's don't know how to compare themselves to B's, Python tries invoking B.__eq__ to see if it knows how to compare itself to an int.
+		e.g  class A(object):
+    def __eq__(self, other):
+        print("A __eq__ called: %r == %r ?" % (self, other))
+        return self.value == other
+	class B(object):
+    def __eq__(self, other):
+        print("B __eq__ called: %r == %r ?" % (self, other))
+        return self.value == other
+
+	a = A()
+	a.value = 3	
+	b = B()
+	b.value = 4
+	a == b
+
+       __gt__() :
+		The __gt__ method is the implementation of >, likewise the other comparison operators have similar methods:
+
+		object.__gt__(self, other)
+
+
+	__iadd__()
+		In addition to overloading __iadd__ (remember to return self!), you can also fallback on __add__, as x += y will work like x = x + y. (This is one of the pitfalls of the += operator.) 
