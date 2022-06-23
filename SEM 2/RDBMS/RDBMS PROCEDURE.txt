@@ -1,0 +1,98 @@
+1.create procedure print_message()
+  select "hello world" as message;
+
+ call print_message();
+******************************************************************
+2. create procedure print_cnum()
+   select name from family where salary= 0;
+   
+   call print_cnum();
+******************************************************************
+
+    ****compound stmt procedure::::******
+
+3. drop procedure if exists print_message;
+   create procedure print_message()
+   select "hello world" as message1;
+   select "this is my frist procedure" as message2;
+
+
+ call print_message();
+
+******************************************************************
+4. drop procedure if exists print_message;
+   delimiter  //
+   create procedure print_message()
+   
+   begin
+   select "hello world" as message1;
+   select "this is my frist procedure" as message2;
+   end//
+   
+   call print_message();
+****************************************************************
+5. drop procedure if exists print_value;
+    delimiter  //
+    create procedure print_value()
+
+begin
+    declare n1 int;
+    declare n2 decimal(9,2);
+    declare name varchar(20);
+
+   set n1 = 10;
+   set n2 = 10.05;
+   set name = "BMIIT";
+
+   select n1 as message1;
+   select n2 as message2;
+   select name as message3;
+end//
+delimiter ;
+
+ call print_value();
+********************************************************
+    ****** 	if....then
+	select"  ";
+	else
+	select"  ";
+	end if;   ******
+
+6. drop procedure if exists count_value ;
+     delimiter  //
+     create procedure count_value ()
+    
+     begin
+	declare n1 int;
+	declare n2 decimal(9,2);
+	
+   set n1=10;
+   set n2=10.05;
+	if n1>n2 then
+		select"n1 is greater" as message1 ;
+	else
+		select"n2 is greater" as message2 ;
+	end if;
+end//
+delimiter ;
+
+  call count_value();
+
+7. 
+
+Drop procedure if exists p_var;
+Delimiter  //
+Create procedure p_var()
+Begin
+	Declare enro int default 127;
+	Declare year int default 2018;
+	Declare fname char(20) default “vishwa”;
+	Declare lname char(20) default “chaturvedi”;
+Select enro,year,fname,lname;
+End//
+
+Delimiter  ;
+ 
+Call p_var();
+
+  

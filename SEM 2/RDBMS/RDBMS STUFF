@@ -1,0 +1,251 @@
+create table salesman(
+snum int(11) primary key,
+sname varchar(20) not null,
+city varchar(20) not null,
+commission int(11));
+
+insert into salesman values (1001,'piyush','london',12);
+insert into salesman values (1002,'niraj','surat',13);
+insert into salesman values (1003,'miti','london',11);
+insert into salesman values (1004,'rajesh','baroda',15);
+insert into salesman values (1005,'anand','new delhi',10);
+insert into salesman values (1006,'ram','patan',10);
+insert into salesman values (1007,'laxman','bombay',9);
+
+create table customer(
+cnum int(11) primary key,
+cname varchar(20) not null,
+city varchar(20) not null,
+rating int(11) not null,
+snum int(11) references salesman(snum));
+
+insert into customer values (2001,'hardik','london',100,1001);
+insert into customer values (2002,'gita','rome',200,1003);
+insert into customer values (2003,'laxit','surat',200,1002);
+insert into customer values (2004,'govind','bombay',300,1002);
+insert into customer values (2005,'chandu','london',100,1001);
+insert into customer values (2006,'champak','surat',300,1007);
+insert into customer values (2007,'pratik','rome',100,1004);
+
+create table orders(
+onum int(11) primary key,
+amount float(7,2) not null,
+odate date not null,
+cnum int(11) references customer(cnum),
+snum int(11) references salesman(snum));
+
+insert into orders values (3001,18.69,'1999-03-10',2007,1007);
+insert into orders values (3002,767.19,'1999-03-10',2001,1001);
+insert into orders values (3003,1900.10,'1999-03-10',2007,1004);
+insert into orders values (3004,5160.45,'1999-03-10',2003,1002);
+insert into orders values (3005,1098.25,'1999-04-10',2008,1007);
+insert into orders values (3006,1713.12,'1999-04-10',2002,1003);
+insert into orders values (3007,75.75,'1999-05-10',2004,1002);
+insert into orders values (3008,4723.00,'1999-05-10',2006,1001);
+insert into orders values (3009,1309.95,'1999-05-10',2004,1002);
+insert into orders values (3010,9898.87,'1999-06-10',2006,1001);
+=====================================================================
+1.write a single statement procedure p_msg() that will print a
+message hello world. keep appropriate comments to make the
+code self explanatory.
+
+
+drop procedure if exists p_msg;
+
+create procedure p_msg()
+
+	select 'hello world.' as 'single statement procedure';
+
+call p_msg;
+=====================================================================
+2.write a compound statement procedure p_msg() that will print
+a message hello world as message1 and my first stored
+procedure as message2. keep appropriate comments to make
+the code self explanatory.
+
+drop procedure if exists p_msg;
+
+create procedure p_msg()
+
+	select 'hello world.' as 'message 1';
+	select 'my first stored procedure.' as 'message 2';
+
+call p_msg;
+=====================================================================
+3.write a procedure p_var() that prints the value of following
+variables.
+v_enrollment_no = 1001
+v_registration_no = 20180000001000001
+v_std_name = 'ajay'
+v_gender='m'
+v_course = 'msc it'
+v_dob = '01/01/2001
+v_percentage =79.50
+---------------------------------------------------------------------
+drop procedure if exists p_var;
+
+delimiter //
+
+create procedure p_var()
+begin
+	declare v_enrollment_no int;
+	declare v_registration_no bigint;
+	declare v_std_name  varchar(20);
+	declare v_gender char(1);
+	declare v_course varchar(20);
+	declare v_dob date;
+	declare v_percentage float;
+
+	set v_enrollment_no = 1001;
+	set v_registration_no = 20180000001000001;
+	set v_std_name = 'ajay';
+	set v_gender='m';
+	set v_course = 'msc it';
+	set v_dob = '2001/01/01';
+	set v_percentage =79.50;
+
+	select v_enrollment_no as 'Enrollment Number',v_registration_no as 'Registration Number ',v_std_name as 'Student Name',v_gender as 'Gender',v_course as 'Course',v_dob as 'Date Of Birth',v_percentage as 'Percentage';
+
+end //
+
+delimiter ;
+
+call p_var;
+=====================================================================
+4.write a procedure p_cnum that prints the name and customer number of customer having cnum = 2001.
+  write appropriate commnet that will explain each statement explicitly.
+---------------------------------------------------------------------
+example:
+
+drop procedure if exists p_cnum;
+
+delimiter //
+
+create procedure p_cnum()
+
+begin
+	declare v_cname varchar(20);
+	declare v_cnum int;
+
+	select cname, cnum into v_cname, v_cnum from customer where cnum =2001;
+
+	select v_cname as c_name, v_cnum as c_num;
+
+end //
+
+delimiter ;
+
+call p_cnum;
+=====================================================================
+5. write a procedure p_order that prints the customer number and order amount of the customer having largest order amount.
+   write appropriate commnet that will explain each statement explicitly.
+---------------------------------------------------------------------
+drop procedure if exists p_order;
+delimiter //
+create procedure p_order()
+begin
+	declare v_num int;	
+	declare m_amount float;
+
+	select cnum,sum(amount) as 'Amount' into v_num,m_amount from orders group by cnum order by amount desc limit 1;
+	
+	select v_num,m_amount;
+
+end //
+delimiter ;
+call p_order;
+=====================================================================
+6. write a procedure p_increment that increase the rating of customer no 2001 by 150. 
+   display the name and increased rating of that customer.
+   write appropriate commnet that will explain each statement explicitly.
+---------------------------------------------------------------------
+drop procedure if exists p_increment;
+
+delimiter //
+
+create procedure p_increment()
+begin
+
+	declare v_rating int;
+	declare v_name varchar(50);
+	select rating
+
+
+
+
+
+
+
+
+***************************************
+************RDBMS FUNCTION*************
+***************************************
+
+drop function if exists simple_function;
+
+delimiter  //
+
+create function simple_function()
+	returns varchar(20)
+
+begin 
+	return "hello world";
+end//
+
+delimiter  ;
+
+select simple_function();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+8*******8*******8******8*******8******	
+ 	
+CURSOR:
+
+8******88*****88******88******88******
+
+create table tbldepartment(
+department_id int ,
+department_name char(30),
+department_location char(30));
+
+insert into tbldepartment values(1,"BMIIT","BARDOLI");
+insert into tbldepartment values(2,"CGPIT","BARDOLI");
+
+*******************************************
+drop procedure if exists dept_cursor();
+
+delimiter  //
+create procedure dept_cursor()
+begin
+	declare dept_cur cursor for
+		select * from tbldepartment;
+end//
+
+delimiter ;
+
+call dept_cursor();
+
+
+*********************************************
+
+
+
+
+
+
+
+
+
+

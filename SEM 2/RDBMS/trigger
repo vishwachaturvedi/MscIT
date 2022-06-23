@@ -1,0 +1,234 @@
+use utu;
+
+create table Cricket (
+cid int primary key auto_increment ,
+Teamname varchar(50) not null unique key,
+Captain varchar(20) not null ,
+Played_match int not null check(Played_match > 0) ,
+total_win_match int not null check(total_win_match > 0 && total_win_match <= Played_match),
+total_loss_match int  check(total_loss_match > 0 && total_win_match <= Played_match));
+
+-----------------------------------------------------------------------------------------------------------------
+
+drop trigger if exists total_loss_match_t ;
+
+delimiter //
+
+create trigger total_loss_match_t
+before insert 
+on Cricket
+for each row 
+begin 
+
+	set new.total_loss_match = new.Played_match - new.total_win_match ;
+
+end //
+
+delimiter ;
+
+insert into Cricket values(101,"CSK","Dhoni",10,5,Null);
+
+---------------------------------------------------------------------------------------------------------------
+create table student 
+( id int primary key auto_increment ,
+name varchar(20) not null ,
+class int not null check(class > 0 && class < 13) ,
+m1 int not null check(m1 > 0 && m1 <= 100),
+m2 int not null check(m2 > 0 && m2 <= 100),
+m3 int not null check(m3 > 0 && m3 <= 100),
+total int ,
+per float(5,2),
+grade char(2) );
+
+drop trigger if exists t_student ;
+
+delimiter //
+
+create trigger t_student 
+before insert 
+on student 
+for each row 
+
+begin 
+		
+	set new.total = new.m1 + new.m2 + new.m3 ;
+	set new.per = (new.total) / 3 ;
+	
+	if (new.per > 90 ) then 
+		set new.grade = "A";
+	elseif (new.per > 60 ) then 
+		set new.grade = "B";
+	elseif (new.per > 40) then 
+		set new.grade = "C";
+	else 
+		set new.grade = "F";
+	end if ;
+
+end //
+
+delimiter ;
+
+insert into student values(101,"Sourabh",5,98,98,97,null,null,null);
+
+---------------------------------------------------------------------------------------------------------------
+
+create table loan
+(cid int primary key auto_increment ,
+lid int not null unique key ,
+loanamount float(12,2) not null check(loanamount > 1000) ,
+installment int ,
+inst_amt float(12,2) ,
+inst_over int not null check(inst_over > 0) );
+
+drop trigger if exists t_loan ;
+
+delimiter //
+
+create trigger t_loan 
+before insert 
+on loan 
+for each row 
+
+begin 
+		set new.inst_amt = new.loanamount/new.installment ;
+
+end //
+
+delimiter ;
+
+insert into loan values (101,201,20000,10,null,15000); 
+
+----------------------------------------------------------------------------------------------------------------
+
+create table t_employee 
+(
+empid int primary key auto_increment ,
+empname varchar(30) not null ,
+city varchar(30) not null ,
+salary float(10,2) not null check(salary > 1000) ,
+status varchar(20) not null );
+
+create table t_ex_employee 
+(
+empid int primary key auto_increment ,
+empname varchar(30) not null ,
+city varchar(30) not null );
+
+drop trigger if exists ex_trigger ;
+
+delimiter //
+
+create trigger ex_trigger 
+after delete 
+on t_employee 
+for each row 
+
+begin 
+		insert into t_ex_employee values (old.empid , old.empname , old.city);
+end //
+
+delimiter ;
+
+insert into t_employee values (101,"Sourabh","Surat",10000,"Senior Analyst");
+
+delete from t_employee where empid = 101;
+
+------------------------------------------------------------------------------------------------------------------
+
+
+create table t_1_employee 
+(
+empid int primary key auto_increment ,
+empname varchar(30) not null ,
+city varchar(30) not null ,
+salary float(10,2) not null check(salary > 1000) ,
+status varchar(20) not null );
+
+create table t_1_ex_employee 
+(
+empid int primary key auto_increment ,
+empname varchar(30) not null ,
+city varchar(30) not null );
+
+drop trigger if exists ex_trigger ;
+
+delimiter //
+
+create trigger ex_trigger 
+after delete 
+on t_1_employee 
+for each row 
+
+begin 
+		insert into t_1_ex_employee values (old.empid , old.empname , old.city);
+end //
+
+delimiter ;
+
+insert into t_1_employee values (101,"Sourabh","Surat",10000,"Senior Analyst");
+
+delete from t_1_employee ;
+
+------------------------------------------------------------------------------------------------------------------
+
+create table gov_salary 
+(
+salary float(12,2) primary key check(salary > 1000),
+HRA float(12,2) ,
+DA float(12,2),
+MA float(12,2) ,
+gross float(12,2) ,
+tax float(12,2) ,
+PF float(12,2) ,
+total_salary float(12,2) );
+
+drop trigger if exists gov_t;
+
+delimiter //
+
+create trigger gov_t 
+before insert 
+on gov_salary 
+for each row 
+
+begin 
+
+	set new.HRA = new.salary / 7.5 ;
+	set new.DA = new.salary / 6.7 ;
+	set new.MA = new.salary /1.5 ;
+	set new.gross = new.salary + new.HRA + new.DA + new.MA ;
+	
+	set new.tax= 0;
+	if (new.gross <= 100000 ) then
+		set new.tax = new.tax   ;
+	end if ;
+	
+	if (new.gross > 100000) then
+		if (new.gross <= 150000) then
+			set new.tax = new.tax + (15000-new.gross) / 7.5 ;
+		else 
+			set new.tax = new.tax + (50000) / 7.5;
+		end if ;
+	end if ;
+
+	
+	if (new.gross > 150000) then
+		if (new.gross <= 200000) then
+			set new.tax = new.tax + (200000-new.gross) / 10 ;
+		else 
+			set new.tax = new.tax + (50000) / 10;
+		end if ;
+	end if ;
+
+	if (new.gross > 20000) then
+		set new.tax = new.tax + (new.gross - 200000) / 15 ;
+		end if ;
+
+	set new.pf = new.salary / 8.33 ;
+
+	set new.total_salary = new.gross - new.pf - new.tax;
+end //
+
+delimiter ;
+
+insert into gov_salary values(20000,null,null,null,null,null,null,null);
