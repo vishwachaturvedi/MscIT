@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_registeration"
+        android:name="com.example.ecommerce.ui.Registeration.RegisterationFragment"
+        android:label="registeration"
+        tools:layout="@layout/registeration_fragment" />
+    <fragment
+        android:id="@+id/nav_login"
+        android:name="com.example.ecommerce.ui.Login.LoginFragment"
+        android:label="login"
+        tools:layout="@layout/login_fragment" />
+    <fragment
+        android:id="@+id/nav_feedback"
+        android:name="com.example.ecommerce.ui.Feedback.FeedbackFragment"
+        android:label="feedback"
+        tools:layout="@layout/feedback_fragment" />
+    <fragment
+        android:id="@+id/nav_order"
+        android:name="com.example.ecommerce.ui.Order.OrderFragment"
+        android:label="order"
+        tools:layout="@layout/order_fragment" />
+    <fragment
+        android:id="@+id/nav_category"
+        android:name="com.example.ecommerce.ui.category.CategoryFragment"
+        android:label="category"
+        tools:layout="@layout/category_fragment" />
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.ecommerce.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+</navigation>

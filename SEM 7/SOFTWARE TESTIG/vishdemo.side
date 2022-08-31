@@ -1,0 +1,175 @@
+{
+  "id": "b8b8540a-03fe-4fee-acd5-13a44943baa1",
+  "version": "2.0",
+  "name": "vishdemo",
+  "url": "https://www.irctc.co.in/nget/train-search",
+  "tests": [{
+    "id": "c731dd5b-5da6-45c4-ba25-70b964858f7b",
+    "name": "Untitled",
+    "commands": [{
+      "id": "96a01dd5-291b-4e6a-8543-bb8026bb786a",
+      "comment": "",
+      "command": "//open",
+      "target": "https://www.instagram.com/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b9ca1873-fff8-4240-8bc8-b01c04f2d2a0",
+      "comment": "",
+      "command": "open",
+      "target": "http://omayo.blogspot.com/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "497a4fec-a9c3-4b37-ba3f-9b01ea0b5fb0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.dropbtn",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0058d14f-d68b-42d0-b572-628251c47dc1",
+      "comment": "",
+      "command": "type",
+      "target": "name=userid",
+      "targets": [
+        ["name=userid", "name"],
+        ["css=form:nth-child(2) > input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='userid']", "xpath:attributes"],
+        ["xpath=//div[@id='HTML42']/div/form/input", "xpath:idRelative"],
+        ["xpath=//div[7]/div/form/input", "xpath:position"]
+      ],
+      "value": "18bmiit127@gmail.com"
+    }, {
+      "id": "cccd3999-b0d1-49d4-ace6-d4b6abf6ad68",
+      "comment": "",
+      "command": "type",
+      "target": "name=pswrd",
+      "targets": [
+        ["name=pswrd", "name"],
+        ["css=form > input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='pswrd']", "xpath:attributes"],
+        ["xpath=//div[@id='HTML42']/div/form/input[2]", "xpath:idRelative"],
+        ["xpath=//div[7]/div/form/input[2]", "xpath:position"]
+      ],
+      "value": "vishwa"
+    }, {
+      "id": "5949ae07-6fdd-40eb-8f76-bd93d5460696",
+      "comment": "",
+      "command": "submit",
+      "target": "css=form > input:nth-child(3)",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "3c5b4e5e-af22-44a8-834b-cfd6a2c3dc5e",
+    "name": "login",
+    "commands": [{
+      "id": "1f87b183-508d-4bf8-b638-344e0206ce0a",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.irctc.co.in/nget/train-search",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9437c0ce-6aea-4018-800a-0b919f7616d1",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=/html/body/app-root/app-home/div[1]/app-header/p-dialog[2]/div/div/div[2]/div/form/div[2]/button",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ada6e093-c2bc-4e74-91fe-ff26cc2cd7a6",
+      "comment": "",
+      "command": "//click",
+      "target": "css=.ui-autocomplete > .ng-tns-c58-8",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9de935ef-3005-4e10-acdc-a30153306aba",
+      "comment": "",
+      "command": "//type",
+      "target": "css=.ng-tns-c58-8 > .ui-inputtext",
+      "targets": [],
+      "value": "MUMBAI"
+    }, {
+      "id": "93c73495-319c-4d42-82a8-51d630a1b035",
+      "comment": "",
+      "command": "//click",
+      "target": "css=.ng-tns-c59-10 > .ui-inputtext",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5e8d32c3-7345-479f-b90f-9b4346998935",
+      "comment": "",
+      "command": "//click",
+      "target": "xpath=//*[@id=\"jDate\"]/span/div/div/div[2]/table/tbody/tr[2]/td[7]/a",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8483b1dd-53ca-4cb6-8c00-08c30b7c6f38",
+      "comment": "",
+      "command": "//click",
+      "target": "css=.ui-dropdown-label-container > .ng-tns-c66-11",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "52b9256f-8c3b-428d-a38b-8e2c4b55eaa5",
+      "comment": "",
+      "command": "//click",
+      "target": "css=.ng-tns-c66-11:nth-child(6) > .ui-dropdown-item",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "858167e3-c763-4e78-a2db-d74282583a0f",
+      "comment": "",
+      "command": "//click",
+      "target": "css=.ng-star-inserted:nth-child(4) > .css-label_c",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "01085555-76f3-451a-9703-e3b5d3ef555a",
+      "comment": "",
+      "command": "//click",
+      "target": "xpath=//*[@id=\"divMain\"]/div/app-main-page/div/div/div[1]/div[1]/div[1]/app-jp-input/p-confirmdialog/div/div/div[3]/button[1]/span[2]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b702cf9d-151d-40fe-a034-3ed06be171b8",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=/html/body/app-root/app-home/div[1]/app-header/div[1]/div[2]/a/i",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "09c86cd6-ef55-4a48-9118-aa92b7089699",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ng-star-inserted > .search_btn",
+      "targets": [
+        ["css=.ng-star-inserted > .search_btn", "css:finder"],
+        ["xpath=//div[@id='slide-menu']/p-sidebar/div/nav/div/label/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'LOGIN')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "735130b3-a852-44dd-8fde-f50639b12618",
+      "comment": "",
+      "command": "answerOnNextPrompt",
+      "target": "Captcha",
+      "targets": [],
+      "value": "cap"
+    }]
+  }],
+  "suites": [{
+    "id": "6ddef434-ffde-489b-9c96-2900a408fcc1",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["c731dd5b-5da6-45c4-ba25-70b964858f7b"]
+  }],
+  "urls": ["https://www.instagram.com/", "http://omayo.blogspot.com/", "https://www.irctc.co.in/nget/train-search"],
+  "plugins": []
+}

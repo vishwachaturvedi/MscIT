@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1049842960521",
+    "project_id": "order-now-40115",
+    "storage_bucket": "order-now-40115.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1049842960521:android:94ea7f3789a93b08a45e58",
+        "android_client_info": {
+          "package_name": "com.example.ordernow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1049842960521-tk5381asf407er9fmba891qmov4et5fl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRM-yhq0BvcsZ4-ckIDxEPhDt_OkD1Tng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1049842960521-tk5381asf407er9fmba891qmov4et5fl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

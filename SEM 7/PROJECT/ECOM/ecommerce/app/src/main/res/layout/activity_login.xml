@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:background="@drawable/background">
+
+    <ImageView
+        android:id="@+id/login_app_logo"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/app_logo"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/login_email"
+        android:layout_below="@+id/login_app_logo"
+        android:background="@drawable/inputs"
+        android:padding="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:hint="Enter Phone number"
+        android:inputType="textEmailAddress"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/login_btn"
+        android:layout_below="@+id/login_email"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/buttons"
+        android:padding="7dp"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:text="Next" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/login_otp"
+        android:layout_below="@+id/login_btn"
+        android:background="@drawable/inputs"
+        android:padding="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:hint="Enter OTP"
+        android:inputType="textEmailAddress"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/otp_btn"
+        android:layout_below="@+id/login_otp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/buttons"
+        android:padding="7dp"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:text="Next" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/login_password"
+        android:background="@drawable/inputs"
+        android:padding="20dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:hint="Enter Password"
+        android:inputType="textPassword"
+        android:layout_below="@id/otp_btn"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/login"
+        android:layout_below="@+id/login_password"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/buttons"
+        android:padding="7dp"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:text="Next" />
+    <LinearLayout
+        android:id="@+id/linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/login"
+        android:layout_marginTop="5dp">
+
+        <com.rey.material.widget.CheckBox
+            android:id="@+id/remember_me"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            style="@style/Material.Drawable.CheckBox"
+            android:text="Remember Me"
+            android:textColor="@color/design_default_color_primary"
+            app:cbd_strokeColor="@color/design_default_color_primary"
+            android:gravity="center_vertical"
+            android:textSize="17dp"
+            android:layout_marginLeft="17dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forget Password?"
+            android:textColor="@color/design_default_color_primary"
+            android:textSize="17dp"
+            android:layout_marginLeft="80dp"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

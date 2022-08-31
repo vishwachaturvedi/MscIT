@@ -1,0 +1,191 @@
+{
+  "id": "59fcd94d-012d-4015-bf8b-f9fe86608994",
+  "version": "2.0",
+  "name": "CIE1 ",
+  "url": "https://collegedunia.com/india-universities",
+  "tests": [{
+    "id": "19ce406c-a458-4352-a646-81f3b643254a",
+    "name": "Untitled",
+    "commands": [{
+      "id": "524cefff-0a63-4adc-b091-99ee52c7c268",
+      "comment": "",
+      "command": "open",
+      "target": "https://collegedunia.com/india-universities",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c12b4873-76a9-4ad5-8094-299a4d2da5ca",
+      "comment": "",
+      "command": "click",
+      "target": "css=.header-level-one > .jsx-2497144617:nth-child(1)",
+      "targets": [
+        ["css=.header-level-one > .jsx-2497144617:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'top universities')]", "xpath:link"],
+        ["xpath=//div[@id='__next']/div/div/div/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://collegedunia.com/india-universities')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e2a26b0f-c451-4cb1-b684-716df1521b8f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.jsx-765939686:nth-child(1) > .jsx-765939686:nth-child(1) > div:nth-child(1) > .jsx-765939686 > .jsx-765939686:nth-child(2)",
+      "targets": [
+        ["css=.jsx-765939686:nth-child(1) > .jsx-765939686:nth-child(1) > div:nth-child(1) > .jsx-765939686 > .jsx-765939686:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='__next']/div[3]/section/div/div[2]/div[2]/div[4]/div/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div[4]/div/div/div/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3a93632f-8f89-43dd-8bcc-2fd2c25d6888",
+      "comment": "",
+      "command": "click",
+      "target": "css=.login-button",
+      "targets": [
+        ["css=.login-button", "css:finder"],
+        ["xpath=//a[contains(text(),'Login')]", "xpath:link"],
+        ["xpath=//div[@id='__next']/div/div/div[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/login')]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1d9892bd-2b71-4ffc-880c-9780aaf64921",
+      "comment": "",
+      "command": "click",
+      "target": "id=loginPhoneNo",
+      "targets": [
+        ["id=loginPhoneNo", "id"],
+        ["name=phone_no", "name"],
+        ["css=#loginPhoneNo", "css:finder"],
+        ["xpath=//input[@id='loginPhoneNo']", "xpath:attributes"],
+        ["xpath=//div[@id='__next']/div[3]/div/div[2]/div/form/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ca660c27-03d1-43dd-acb2-3bc4198e60f7",
+      "comment": "",
+      "command": "type",
+      "target": "id=loginPhoneNo",
+      "targets": [
+        ["id=loginPhoneNo", "id"],
+        ["name=phone_no", "name"],
+        ["css=#loginPhoneNo", "css:finder"],
+        ["xpath=//input[@id='loginPhoneNo']", "xpath:attributes"],
+        ["xpath=//div[@id='__next']/div[3]/div/div[2]/div/form/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "9974530278"
+    }, {
+      "id": "ebe616b2-c866-4845-afc2-181a31862be2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='__next']/div[3]/div/div[2]/div/form/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Request OTP')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "97ea7437-bea4-45f8-8e5f-32bc77f4e867",
+      "comment": "",
+      "command": "type",
+      "target": "name=otp",
+      "targets": [
+        ["name=otp", "name"],
+        ["css=.otp__fields:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='otp']", "xpath:attributes"],
+        ["xpath=//div[@id='modal-root']/div/div/div/div/div/div[2]/form/div/input", "xpath:idRelative"],
+        ["xpath=//form/div/input", "xpath:position"]
+      ],
+      "value": "9"
+    }, {
+      "id": "7de60030-dffd-424a-9601-b63205fd25d8",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(2)",
+      "targets": [
+        ["css=.form-control:nth-child(2)", "css:finder"],
+        ["xpath=(//input[@name='otp'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='modal-root']/div/div/div/div/div/div[2]/form/div/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "4"
+    }, {
+      "id": "71bd651d-9a97-41b9-9b45-e1651a8fc2c2",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(3)",
+      "targets": [
+        ["css=.form-control:nth-child(3)", "css:finder"],
+        ["xpath=(//input[@name='otp'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='modal-root']/div/div/div/div/div/div[2]/form/div/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "9"
+    }, {
+      "id": "350d4adb-3394-44c1-bfa1-f528a3843cad",
+      "comment": "",
+      "command": "type",
+      "target": "css=.form-control:nth-child(4)",
+      "targets": [
+        ["css=.form-control:nth-child(4)", "css:finder"],
+        ["xpath=(//input[@name='otp'])[4]", "xpath:attributes"],
+        ["xpath=//div[@id='modal-root']/div/div/div/div/div/div[2]/form/div/input[4]", "xpath:idRelative"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": "7"
+    }, {
+      "id": "9a72f269-9e90-48eb-bc19-fd19e1976411",
+      "comment": "",
+      "command": "submit",
+      "target": "css=.px-5:nth-child(3)",
+      "targets": [
+        ["css=.px-5:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='modal-root']/div/div/div/div/div/div[2]/form/button", "xpath:idRelative"],
+        ["xpath=//div[2]/form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit OTP')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5f633771-abfe-4b9f-9bfb-f90d28d40ddf",
+      "comment": "",
+      "command": "click",
+      "target": "css=.d-inline-block:nth-child(1)",
+      "targets": [
+        ["css=.d-inline-block:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'top universities')]", "xpath:link"],
+        ["xpath=//div[@id='__next']/div/div/div/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://collegedunia.com/india-universities')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6d9f021b-f57c-4936-81c0-ae10c776e597",
+      "comment": "",
+      "command": "click",
+      "target": "css=.jsx-765939686:nth-child(1) > .jsx-765939686:nth-child(1) > div:nth-child(1) > .jsx-765939686 > .jsx-765939686:nth-child(2)",
+      "targets": [
+        ["css=.jsx-765939686:nth-child(1) > .jsx-765939686:nth-child(1) > div:nth-child(1) > .jsx-765939686 > .jsx-765939686:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='__next']/div[3]/section/div/div[2]/div[2]/div[4]/div/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div[4]/div/div/div/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "6706897f-8bc6-48d8-bba1-e9a470e10dfb",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["19ce406c-a458-4352-a646-81f3b643254a"]
+  }],
+  "urls": ["https://collegedunia.com/india-universities"],
+  "plugins": []
+}

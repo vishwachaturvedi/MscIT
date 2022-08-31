@@ -1,0 +1,72 @@
+{
+  "id": "316ba55c-c915-4ef2-8918-32740e197bd1",
+  "version": "2.0",
+  "name": "CIE Q1",
+  "url": "https://www.google.com/search?q=diwali+2021+images&sxsrf=AOaemvKcxRcAbJkibnmUiGwbECJrc2eNuA:1636698334840&tbm=isch&source=iu&ictx=1&fir=Y3OLJcTMllO7yM%252CojeW-h7uaedCxM%252C_%253BxV41fvqZyyTAnM%252Cb7SKSstu5mLJ8M%252C_%253Bc_W6KBqXhF5WFM%252CmL6aQd-0FSHJaM%252C_%253Bma4BxD7DQS7mhM%252CavZhEHKTzq622M%252C_%253Bd71Lm4FDFpeq8M%252CavZhEHKTzq622M%252C_%253B3PrGiqf7G4mnAM%252CZG3FwKH81qLX8M%252C_%253B2v8M3iSucH6D8M%252CavZhEHKTzq622M%252C_%253Btnzg4Idqxi0W2M%252CIGCPkSI4Yj_u9M%252C_%253B5woHE-yy40Tu7M%252CxacbdcwvFQYG-M%252C_%253B0kSiifEqOKG4RM%252CXikFjn02Rs1hXM%252C_%253BEicRRcBB8xAxMM%252CavZhEHKTzq622M%252C_%253Bvi7IS6O0G9nPCM%252Ccwri4DOCRwbkbM%252C_%253BAgQkhHRVTZAeRM%252C7NqCKl5GwdrwbM%252C_%253BrqyKQ6VOQTfBlM%252CS56fwPFWfuda7M%252C_&vet=1&usg=AI4_-kRBN0pwfNtj0VcTdJPx3CHv3bxyvg&sa=X&ved=2ahUKEwjTq-i2mJL0AhUJcCsKHVb0Cq8Q9QF6BAgIEAE#imgrc=5woHE-yy40Tu7M",
+  "tests": [{
+    "id": "86206909-95d1-4314-8c50-e689b415277e",
+    "name": "Untitled",
+    "commands": [{
+      "id": "52be14d4-ef3f-47e5-9478-2b63d96ba742",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.google.co.in/?gfe_rd=cr&ei=RQg0WNXUEbL98weC67XIBQ",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ca0b9117-2f9f-4bcf-8bc9-6088f514e87b",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.google.co.in/?gfe_rd=cr&ei=RQg0WNXUEbL98weC67XIBQ",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6769d9b2-f7a0-424f-883a-3fba2b039f9f",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.google.co.in/search?q=diwali+2021+images&sxsrf=AOaemvKQhvVFWKUWiet19lph8vLHj7PGXw:1636699050498&tbm=isch&source=iu&ictx=1&fir=Y3OLJcTMllO7yM%252CojeW-h7uaedCxM%252C_%253BxV41fvqZyyTAnM%252Cb7SKSstu5mLJ8M%252C_%253Bma4BxD7DQS7mhM%252CavZhEHKTzq622M%252C_%253Bc_W6KBqXhF5WFM%252CmL6aQd-0FSHJaM%252C_%253Bd71Lm4FDFpeq8M%252CavZhEHKTzq622M%252C_%253B3PrGiqf7G4mnAM%252CZG3FwKH81qLX8M%252C_%253B2v8M3iSucH6D8M%252CavZhEHKTzq622M%252C_%253Btnzg4Idqxi0W2M%252CIGCPkSI4Yj_u9M%252C_%253B5woHE-yy40Tu7M%252CxacbdcwvFQYG-M%252C_%253B0kSiifEqOKG4RM%252CXikFjn02Rs1hXM%252C_%253BEicRRcBB8xAxMM%252CavZhEHKTzq622M%252C_%253Bvi7IS6O0G9nPCM%252Ccwri4DOCRwbkbM%252C_%253BAgQkhHRVTZAeRM%252C7NqCKl5GwdrwbM%252C_%253BrqyKQ6VOQTfBlM%252CS56fwPFWfuda7M%252C_&vet=1&usg=AI4_-kT8SMGYfO7p6TQAXSFO7UY3MU6T2A&sa=X&ved=2ahUKEwix14iMm5L0AhWH7XMBHX3UBqUQ9QF6BAgIEAE#imgrc=5woHE-yy40Tu7M",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f684e148-e4fd-4a6e-adc1-de741ee36a4c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.isv-r:nth-child(6) .rg_i",
+      "targets": [
+        ["css=.isv-r:nth-child(6) .rg_i", "css:finder"],
+        ["xpath=//img[@alt='Happy Diwali 2021 Wishes, Messages, HD Images, GIF, Pic, PNG, Photos,  Status, Greetings for Deepavali Wishes']", "xpath:img"],
+        ["xpath=//div[@id='islrg']/div/div[6]/a/div/img", "xpath:idRelative"],
+        ["xpath=//div[6]/a/div/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a2dccbf5-1984-4db9-b095-7858928312d2",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.google.com/search?q=utu+logo&oq=utu+l&aqs=chrome.1.69i57j0i512l2j46i175i199i512j0i512l2j69i60l2.6988j0j7&sourceid=chrome&ie=UTF-8",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2e3cf565-e41c-4a9f-a963-fbea113e5b45",
+      "comment": "",
+      "command": "click",
+      "target": "css=.eA0Zlc:nth-child(2) .fWhgmd",
+      "targets": [
+        ["css=.eA0Zlc:nth-child(2) .fWhgmd", "css:finder"],
+        ["xpath=//div[@id='Odp5De']/div/div[2]/div/div/div[3]/div/div/div/div/div[2]/a/g-img/div", "xpath:idRelative"],
+        ["xpath=//div[2]/a/g-img/div", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "34a7f15b-e8ed-47bf-9d37-3b62e429a587",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["86206909-95d1-4314-8c50-e689b415277e"]
+  }],
+  "urls": ["https://www.google.com/search?q=diwali+2021+images&sxsrf=AOaemvKcxRcAbJkibnmUiGwbECJrc2eNuA:1636698334840&tbm=isch&source=iu&ictx=1&fir=Y3OLJcTMllO7yM%252CojeW-h7uaedCxM%252C_%253BxV41fvqZyyTAnM%252Cb7SKSstu5mLJ8M%252C_%253Bc_W6KBqXhF5WFM%252CmL6aQd-0FSHJaM%252C_%253Bma4BxD7DQS7mhM%252CavZhEHKTzq622M%252C_%253Bd71Lm4FDFpeq8M%252CavZhEHKTzq622M%252C_%253B3PrGiqf7G4mnAM%252CZG3FwKH81qLX8M%252C_%253B2v8M3iSucH6D8M%252CavZhEHKTzq622M%252C_%253Btnzg4Idqxi0W2M%252CIGCPkSI4Yj_u9M%252C_%253B5woHE-yy40Tu7M%252CxacbdcwvFQYG-M%252C_%253B0kSiifEqOKG4RM%252CXikFjn02Rs1hXM%252C_%253BEicRRcBB8xAxMM%252CavZhEHKTzq622M%252C_%253Bvi7IS6O0G9nPCM%252Ccwri4DOCRwbkbM%252C_%253BAgQkhHRVTZAeRM%252C7NqCKl5GwdrwbM%252C_%253BrqyKQ6VOQTfBlM%252CS56fwPFWfuda7M%252C_&vet=1&usg=AI4_-kRBN0pwfNtj0VcTdJPx3CHv3bxyvg&sa=X&ved=2ahUKEwjTq-i2mJL0AhUJcCsKHVb0Cq8Q9QF6BAgIEAE#imgrc=5woHE-yy40Tu7M"],
+  "plugins": []
+}

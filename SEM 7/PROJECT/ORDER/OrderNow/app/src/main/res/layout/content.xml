@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/lbl_nam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Iteam Name : "
+        android:textColorHint="@color/black"
+         />
+
+    <EditText
+
+        android:id="@+id/cp_name"
+        android:layout_width="441dp"
+        android:layout_height="wrap_content"
+
+
+        android:textColorHint="@color/black" />
+
+    <TextView
+        android:id="@+id/lbl_tetpric"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Iteam Price : "
+        android:textColorHint="@color/black"
+        />
+
+    <EditText
+        android:id="@+id/c_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         />
+
+    <TextView
+        android:id="@+id/lbl_stock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Iteam  Stock : "
+        android:textColorHint="@color/black"
+         />
+
+    <EditText
+
+        android:id="@+id/up_stocke"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:textColorHint="@color/black"
+         />
+
+    <TextView
+        android:id="@+id/lbl_cat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Category  : "
+        android:textColorHint="@color/black"
+         />
+
+    <EditText
+
+        android:id="@+id/up_cate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:textColorHint="@color/black"
+         />
+
+    <Button
+        android:id="@+id/update_c"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update"
+       />
+
+
+</LinearLayout>
