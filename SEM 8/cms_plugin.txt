@@ -1,0 +1,98 @@
+
+file for plugin settings(index.php)
+===================================================================================================================================
+<?php
+/**
+ * Plugin Name: Appointment
+ * Plugin URI:
+ * Version: 1.0.0
+ * Description: my descp
+ * Author: Pooja Maldikar
+ * Author URI: none
+ * Text Domain: firstplugin
+ */
+//initialize functions to activate and deactivate
+register_activation_hook(__FILE__,'form_data_activate');
+register_deactivation_hook(__FILE__,'form_data_deactivate');
+
+//create function and perform functionality
+function form_data_activate()
+{
+
+// Create connection
+$conn = new mysqli("localhost", "root", "","externalcms");
+
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+// sql to create table
+$sql = "CREATE TABLE tbl_appoint (
+    id INT(6) AUTO_INCREMENT PRIMARY KEY,
+    firstname VARCHAR(30) NOT NULL,
+    email VARCHAR(30) NOT NULL,
+    gender CHAR(10),
+    phone CHAR(10),
+    appoint_for VARCHAR(50) NOT NULL,
+    app_time time ,
+    appoint_date date
+    )";
+    
+ //pass query to connection(database)   
+    $conn->query($sql);
+    
+//close connection
+    $conn->close();
+}
+
+//create function and perform functionality
+function form_data_deactivate()
+{
+    // Create connection
+$conn = new mysqli("localhost", "root", "","externalcms");
+
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+//drop table
+$sql = "drop table tbl_appoint;";
+
+//pass query to connection(database)
+$conn->query($sql);
+
+//close connection
+$conn->close();
+}
+
+//create a action_method and pass function to display in dashboard
+add_action('admin_menu', 'product_data_menu');
+
+//create function and perform functionality
+function product_data_menu()
+{
+    //create main option in dashboard
+    add_menu_page("customplugin","Appointment Plugin","manage_options","custom-plugin1","product_data_list","dashicons-dashboard",11);
+    //create submenu for main plugin menu
+    add_submenu_page("custom-plugin1","View Appointment","View Appointment","manage_options","add-new","add_new_function");
+}
+//create function that will display when main plugin option is selected
+function product_data_list()
+{
+
+    include("index.php");
+}
+//create function that will display when submenu option of plugin is selected
+function add_new_function()
+{
+
+    include("view.php");
+}
+
+//function to create shortcode
+function shortcode_func($atts){
+  include("index.php");
+}
+//pass the function name to the inbuilt function for shortcode
+add_shortcode("appointcode", "shortcode_func");
+=====================================================================================================================================
